@@ -1,21 +1,14 @@
 import GameView from "./game_view";
+import Player from "./player";
 
 export default class Game {
     constructor() {
-        window.addEventListener("keydown", function(e) {
-            keys[e.key] = true;
-            // console.log(keys);
-            Player.moving = true;
-        });
-        
-        window.addEventListener("keyup", function(e) {
-            delete keys[e.key];
-            Player.moving = false;
-        });
+        // this.canvas = canvas
         this.inventory = [];
+        this.keys = []
+        // this.player = new Player();
         const gameView = new GameView();
         gameView.animate();
-        // console.log(gameView.then);
     }
 
   }

@@ -7,7 +7,7 @@ export default class GameView {
         this.ctx = this.canvas.getContext("2d");
         this.canvas.width = 900;
         this.canvas.height = 600;
-        this.player = new Player();
+        this.player = new Player(this.canvas);
         this.then = 0;
         this.fpsInterval = 0;
     }
@@ -65,8 +65,8 @@ export default class GameView {
             
             this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width, this.player.height);
             requestAnimationFrame(this.animate.bind(this));
-            // player.movePlayer();
-            // player.handlePlayerFrame();
+            this.player.movePlayer();
+            this.player.handlePlayerFrame();
             // setInterval(moveBackground(grassFrame), 600);
         // }
     };

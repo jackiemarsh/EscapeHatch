@@ -1,5 +1,5 @@
 export default class Player {
-        constructor() {
+        constructor(canvas) {
             this.x = 250,
             this.y = 250,
             this.width = 40,
@@ -8,9 +8,21 @@ export default class Player {
             this.frameY = 0,
             this.speed = 9,
             this.moving = false,
-            this.keys = []
+            this.keys = [];
+            this.canvas = canvas;
+
+            document.addEventListener("keydown", (e) => {
+                this.keys[e.key] = true;
+                // console.log(keys);
+                this.moving = true;
+            });
+            
+            document.addEventListener("keyup", (e) => {
+                delete this.keys[e.key];
+                this.moving = false;
+            });
         }
-    
+
     handlePlayerFrame() {
         if (this.frameX < 1 && this.moving) this.frameX++;
         else this.frameX = 0;
@@ -26,11 +38,11 @@ export default class Player {
             this.x -= this.speed;
             this.moving = true;
         }
-        if (this.keys["ArrowDown"] && this.y < canvas.height - this.height) {
+        if (this.keys["ArrowDown"] && this.y < this.canvas.height - this.height) {
             this.y += this.speed;
             this.moving = true;
         }
-        if (this.keys["ArrowRight"] && this.x < canvas.width - this.width) {
+        if (this.keys["ArrowRight"] && this.x < this.canvas.width - this.width) {
             this.x += this.speed;
             this.moving = true;
         }
