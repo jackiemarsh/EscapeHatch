@@ -14,7 +14,8 @@ export default class Game {
         });
         this.inventory = [];
         const gameView = new GameView();
-        // gameView.startAnimating(15);
+        gameView.animate();
+        // console.log(gameView.then);
     }
 
   }

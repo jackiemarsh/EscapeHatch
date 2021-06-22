@@ -6,6 +6,7 @@ import Player from "./player.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const game = new Game();
+    
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
     // canvas.width = 900;
