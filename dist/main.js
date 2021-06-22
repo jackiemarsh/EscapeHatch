@@ -9,68 +9,24 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/game.js":
-/*!*********************!*\
-  !*** ./src/game.js ***!
-  \*********************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack:///./src/game.js?");
-
-/***/ }),
-
-/***/ "./src/game_view.js":
-/*!**************************!*\
-  !*** ./src/game_view.js ***!
-  \**************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\")\n\nclass GameView {\n    constructor () {\n        // this.game = game;\n        this.ctx = ctx;\n        // this.ctx.beginPath();\n        // this.ctx.rect(20, 40, 50, 50);\n        // this.ctx.fillStyle = \"#FF0000\";\n        // this.ctx.fill();\n        // this.ctx.closePath();\n    }\n  \n\n\n    start() {\n    // this.bindKeyHandlers();\n    this.lastTime = 0;\n    // this.game.drawShip()\n    requestAnimationFrame(this.animate.bind(this));\n    };\n\n    animate(time) {\n    // const timeDelta = time - this.lastTime;\n  \n    // this.game.step(timeDelta);\n    // this.game.draw(this.ctx);\n    this.lastTime = time;\n  \n    requestAnimationFrame(this.animate.bind(this));\n    };\n}\nmodule.exports = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ (() => {
 
-eval("console.log(\"Webpack is working\")\n\n// const Game = require(\"./game\");\nconst GameView = __webpack_require__(/*! ./game_view */ \"./src/game_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvasEl = document.getElementById(\"escape-canvas\");\n//   canvasEl.width = Game.DIM_X;\n//   canvasEl.height = Game.DIM_Y;\n\n  const ctx = canvasEl.getContext(\"2d\");\n//   const game = new Game();\n//   new GameView(game, ctx).start();\n    ctx.beginPath();\n    ctx.rect(0, 0, canvasEl.width, canvasEl.height);\n    ctx.fillStyle = \"blue\";\n    ctx.fill();\n    ctx.closePath();\n    // let img = new Image();\n    // img.src = \"board-ship.png\"\n    // // let ctx = canvas.getContext('2d');\n    //     ctx.drawImage(img, 0, 0)\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"Webpack is working\")\n\n// const Game = require(\"./game\");\n// const GameView = require(\"./game_view\");\n\n// document.addEventListener(\"DOMContentLoaded\", function () {\n    const canvas = document.getElementById(\"practice-canvas\");\n    const ctx = canvas.getContext(\"2d\");\n    canvas.width = 900;\n    canvas.height = 600;\n    \n    const keys = []\n    \n    const player = {\n        x: 250,\n        y: 250,\n        width: 40,\n        height: 50,\n        frameX: 0,\n        frameY: 0,\n        speed: 9,\n        moving: false\n    };\n    \n    const grassFrame = {\n        width: 50,\n        height: 150,\n        frameX: 0,\n        speed: 2\n    }\n    \n    const playerSprite = new Image();\n    playerSprite.src = \"./assets/images/Pirate.png\"\n    const background1 = new Image();\n    background1.src = \"./assets/images/underwater.png\"\n    const background2 = new Image();\n    background2.src = \"./assets/images/ship.png\"\n    const background3 = new Image();\n    background3.src = \"./assets/images/ship copy.png\"\n    const grass = new Image();\n    grass.src = \"./assets/images/grass.png\"\n    \n    function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {\n        ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);\n    \n    }\n    \n    // let position = 0;\n    \n    \n    \n    window.addEventListener(\"keydown\", function(e) {\n        keys[e.key] = true;\n        // console.log(keys);\n        player.moving = true;\n    });\n    \n    window.addEventListener(\"keyup\", function(e) {\n        delete keys[e.key];\n        player.moving = false;\n    });\n    \n    function moveBackground() {\n        if (grassFrame.frameX === 0) grassFrame.frameX = 1;\n        else grassFrame.frameX = 0;\n    } \n    setInterval(moveBackground, 600)\n    \n    function movePlayer() {\n        if (keys[\"ArrowUp\"] && player.y > 175) {\n            player.y -= player.speed;\n            // player.frameX = 1;\n            player.moving = true;\n        }\n        if (keys[\"ArrowLeft\"] && player.x > 0) {\n            player.x -= player.speed;\n            player.moving = true;\n        }\n        if (keys[\"ArrowDown\"] && player.y < canvas.height - player.height) {\n            player.y += player.speed;\n            player.moving = true;\n        }\n        if (keys[\"ArrowRight\"] && player.x < canvas.width - player.width) {\n            player.x += player.speed;\n            player.moving = true;\n        }\n    }\n    \n    function handlePlayerFrame() {\n        if (player.frameX < 1 && player.moving) player.frameX++;\n        else player.frameX = 0;\n    }\n    \n    // function animate() {\n    //     ctx.clearRect(0, 0, canvas.width, canvas.height)\n    //     ctx.drawImage(background1, 0, 0, canvas.width, 134);\n    //     // position++;\n    //     ctx.drawImage(background3, 0, 50, background3.width, 50, 0, 133, canvas.width, 280)\n    //     ctx.drawImage(background2, 0, 60, background2.width, 50, 0, 433, canvas.width, 250)\n    //     drawSprite(playerSprite, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.x, player.y, player.width, player.height)\n    //     movePlayer();\n    //     handlePlayerFrame();\n    \n    //     requestAnimationFrame(animate);\n    // };\n    \n    // animate();\n    \n    let fps, fpsInterval, startTime, now, then, elapsed;\n    \n    \n    function startAnimating(fps) {\n        fpsInterval = 1000/fps;\n        then = Date.now();\n        startTime = then;\n        animate();\n    }\n    \n    function animate() {\n        requestAnimationFrame(animate);\n        now = Date.now();\n        elapsed = now - then;\n        if (elapsed > fpsInterval) {\n            then = now - (elapsed % fpsInterval);\n            ctx.clearRect(0, 0, canvas.width, canvas.height);\n            ctx.drawImage(background1, 0, 0, canvas.width, 134);\n            ctx.drawImage(background3, 0, 50, background3.width, 50, 0, 133, canvas.width, 280);\n            ctx.drawImage(background2, 0, 60, background2.width, 50, 0, 433, canvas.width, 250);\n            ctx.drawImage(grass, grassFrame.width*grassFrame.frameX, 0, 50, 100, 5, 503, 50, 150);\n            ctx.drawImage(grass, grassFrame.width*grassFrame.frameX, 0, 50, 100, 250, 500, 50, 150);\n            ctx.drawImage(grass, grassFrame.width*grassFrame.frameX, 0, 50, 100, 675, 503, 50, 150);\n            ctx.drawImage(grass, grassFrame.width*grassFrame.frameX, 0, 50, 100, 800, 503, 50, 150);\n    \n            drawSprite(playerSprite, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.x, player.y, player.width, player.height);\n            movePlayer();\n            handlePlayerFrame();\n        }\n    }\n    startAnimating(15);\n    \n// });\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./src/index.js"]();
 /******/ 	
 /******/ })()
 ;
