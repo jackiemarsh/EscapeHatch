@@ -2,8 +2,8 @@ export default class Player {
         constructor(canvas) {
             this.x = 250,
             this.y = 250,
-            this.width = 40,
-            this.height = 50,
+            this.width = 39,
+            this.height = 56,
             this.frameX = 0,
             this.frameY = 0,
             this.speed = 9,
@@ -24,7 +24,13 @@ export default class Player {
         }
 
     handlePlayerFrame() {
-        if (this.frameX < 1 && this.moving) this.frameX++;
+        if (this.frameX < 1 && this.moving) {
+            this.frameY = 2;
+            this.frameX = 1
+        // } else if (this.frameX >= 1 && this.moving) {
+        //     this.frameX++;
+        //     this.frameY = 1;
+        }
         else this.frameX = 0;
     }
 

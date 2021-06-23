@@ -1,5 +1,6 @@
 import GameView from "./game_view";
 import Player from "./player";
+import Inventory from "./inventory";
 
 export default class Game {
     constructor() {
@@ -8,13 +9,19 @@ export default class Game {
         this.keys = []
         // this.player = new Player();
         const gameView = new GameView();
-        gameView.animate();
+        gameView.startAnimating(15);
+        this.player = new Player();
+        this.inventory = new Inventory(700, 100, 300, 120)
     }
 
-  }
+    keyInventory(sprite) {
+        if (this.player.keys["l"] && this.inventory.collideRect(sprite)) {
+            this.inventory.addItem(sprite)
+        }
+        if (this.player.keys["a"] && this.inventory.items.includes(sprite)) {
+            this.inventory.dropItem(sprite)
+        }
+    }
+    
+}
   
-//   Game.BG_COLOR = "blue";
-//   Game.DIM_X = 1000;
-//   Game.DIM_Y = 600;
-//   Game.FPS = 32;
-//   Game.NUM_ASTEROIDS = 10;
