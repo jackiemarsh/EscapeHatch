@@ -26,6 +26,7 @@ export default class GameView {
 
         const inventory = new Inventory(700, 100, 300, 120);
         inventory.drawInventory()
+        
     }
     
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -33,7 +34,7 @@ export default class GameView {
     }
 
     moveBackground(sprite) {
-        if (sprite.frameX === 0) sprite.frameX = 1;
+        if (sprite.frameX === 0) sprite.frameX++;
         else sprite.frameX = 0;
     } 
 
@@ -53,7 +54,7 @@ export default class GameView {
         let now, elapsed;
         
         const playerSprite = new Image();
-        playerSprite.src = "../dist/assets/images/Pirate.png"
+        playerSprite.src = "../dist/assets/images/guybrush.PNG"
         const background1 = new Image();
         background1.src = "../dist/assets/images/underwater.png"
         const background2 = new Image();
@@ -85,12 +86,10 @@ export default class GameView {
             this.ctx.drawImage(environment, 400, 62, 50, 50, 800, 100, 100, 100);
             this.ctx.drawImage(environment, 350, 82, 40, 40, 825, 535, 80, 80);
 
-            this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width+10, this.player.height+10);
+            this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width+20, this.player.height+20);
             this.player.movePlayer();
             this.player.handlePlayerFrame();
-            // setInterval(this.moveBackground.bind(this), 5000, this.grassFrame);
         }
         requestAnimationFrame(this.animate.bind(this));
     };
-    // startAnimating(15);
 };

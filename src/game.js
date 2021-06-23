@@ -12,6 +12,8 @@ export default class Game {
         gameView.startAnimating(15);
         this.player = new Player();
         this.inventory = new Inventory(700, 100, 300, 120)
+        this.inventory.drawInventoryItems();
+        // this.inventory.drawAllItems();
     }
 
     keyInventory(sprite) {
