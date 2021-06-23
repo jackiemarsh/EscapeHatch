@@ -1,3 +1,5 @@
+import Inventory from "./inventory";
+
 export default class Player {
         constructor(canvas) {
             this.x = 250,
@@ -10,6 +12,8 @@ export default class Player {
             this.moving = false,
             this.direction = "idle",
             this.keys = [];
+            // this.inventory = new Inventory(x, y, w, h)
+            // this.items = this.inventory.generateAllItems
             this.canvas = canvas;
 
             document.addEventListener("keydown", (e) => {

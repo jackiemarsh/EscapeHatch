@@ -6,8 +6,10 @@ export default class Inventory {
         this.y = y;
         this.w = w;
         this.h = h;
-        this.items = new Array();
+        this.allItems = new Array();
+        this.inventoryItems = new Array();
         this.columns = 6;
+        this.rows = 2;
         this.canvas = document.getElementById("inventory-canvas");
         this.ctx = this.canvas.getContext("2d", { alpha: true });
         // this.ctx.mozImageSmoothingEnabled = false;
@@ -20,11 +22,11 @@ export default class Inventory {
 
 
     addItem(sprite) {
-        if (this.items.length == this.columns) {
+        if (this.inventoryItems.length == this.columns) {
             sprite.vy = -4;
             return false
         }
-        this.items.push(sprite)
+        this.inventoryItems.push(sprite)
         return true;
     };
 
@@ -58,8 +60,8 @@ export default class Inventory {
     generateAllItems() {
         let generatedItems = [
              new Item("barrel", 0, 0, 1000, 800, Math.random() * 250, Math.random() * 120, 75, 75, "../dist/assets/inventory/barrel.png"),
-            //  new Item("bread", 0, 0, 466, 319, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/bread.png"),
-            //  new Item("coin", 0, 0, 345, 417, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/coin.png"),
+             new Item("bread", 0, 0, 466, 319, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/bread.png"),
+             new Item("coin", 0, 0, 345, 417, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/coin.png"),
             //  new Item("crystal", 0, 0, 361, 538, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/crystal.png"),
             //  new Item("shell", 50, 0, 50, 50, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/shell.png"),
             //  new Item("key", 32, 0, 32, 32, Math.random() * 240, Math.random() * 240, 75, 75, "../dist/assets/inventory/KeyIcons.png"),
@@ -73,17 +75,20 @@ export default class Inventory {
     }
 
     drawInventoryItems() {
-        this.items = this.generateAllItems();
+        this.inventoryItems = this.generateAllItems();
 
-        this.items.forEach(item => {
-            let newItem = new Image();
-            newItem.src = item.src;
-            newItem.onload = () => { 
-            this.ctx.drawImage(newItem, item.x, item.y, item.w, item.h, item.dx, item.dy, item.dw, item.dh)
-            }
-        });
+        if (this.inventoryItems.length) { 
+            this.inventoryItems.forEach(item => {
+                console.log(item)
+                let index = this.inventoryItems.indexOf(item);
+                let newItem = new Image();
+                newItem.src = item.src;
+                newItem.onload = () => { 
+                this.ctx.drawImage(newItem, item.x, item.y, item.w, item.h, (this.w / this.columns * index), 55, 35, 35) 
+                }
+            });
+        }
     }
-
     // var pointer = { x:100, y:0, down:false };
 
     // function loop(time_step) {
@@ -91,31 +96,30 @@ export default class Inventory {
     // window.requestAnimationFrame(loop);// perpetuate the loop
 
     clickInventory() {
-
-           if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
-               let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
+        //    if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
+        //        let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
                
-               pointer.x = player.x + player.w * 0.5;
-               let item = inventory.dropItem(index, player.x, player.y);
+        //        pointer.x = player.x + player.w * 0.5;
+        //        let item = inventory.dropItem(index, player.x, player.y);
                
-               if (item) items.unshift(item);
-            };
+        //        if (item) items.unshift(item);
+        //     };
     };
 
     drawInventory() {
         this.ctx.fillStyle = "lightgray";
         this.ctx.fillRect(this.x, this.y, this.w, this.h);
 
-        for (let index = inventory.items.length-1; index > -1; -- index) {
-
-        //   let item = inventory.items[index];
-        //   let dest_x = inventory.x + index * tile_size * 2;
-            
-        //   this.ctx.drawImage(tile_set, item.sx, item.sy, item.w, item.h, dest_x, inventory.y, tile_size * 2, tile_size * 2);
-        //     /* Draw to the display context */
-        //     // context.drawImage(buffer.canvas, 0, 0, buffer.canvas.width, buffer.canvas.height, 0, 0, context.canvas.width, context.canvas.height);
-
-        // };
+        // if (this.inventoryItems.length) { 
+        //     for (let lastIndex = this.items.length-1; index > -1; --index) {
+        //         let item = this.items[lastIndex];
+        //         let d_x = this.w / this.columns * lastIndex;
+        //         // let d_y = this.y / this.rows * lastIndex;
+                
+        //         this.ctx.drawImage();
+        //         // context.drawImage(buffer.canvas, 0, 0, buffer.canvas.width, buffer.canvas.height, 0, 0, context.canvas.width, context.canvas.height);
+        //     };
+        // }
     };
 
     drawAllItems() {
