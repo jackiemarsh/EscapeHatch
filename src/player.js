@@ -149,7 +149,11 @@ export default class Player {
             item.vy = -4;
             return false
         }
+        console.log("before splice", this.allItems.gameItems, this.allItems.gameItems.indexOf(item))
+
+        this.allItems.gameItems.splice(this.allItems.gameItems.indexOf(item), 1)
         this.inventory.push(item)
+        console.log(this.allItems.gameItems)
         console.log("inv after push", this.inventory)
         return true;
         

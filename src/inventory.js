@@ -46,8 +46,8 @@ export default class Inventory {
     //   let player = new Player();
     //   let inventory = new Inventory(120, 8, 128, 32);
     generateAllItems() {
-        let xLow = 170;
-        let yLow = 50;
+        let xLow = 50;
+        let yLow = 170;
         let xHigh = 850;
         let yHigh = 550;
         let dXMin = Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow;
@@ -103,7 +103,7 @@ export default class Inventory {
     // function loop(time_step) {
 
     // window.requestAnimationFrame(loop);// perpetuate the loop
-
+    
     clickInventory() {
         //    if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
         //        let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
