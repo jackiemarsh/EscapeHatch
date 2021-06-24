@@ -37,6 +37,7 @@ export default class Player {
                 console.log(this.keys);
                 console.log(this.direction, this.frameX, this.frameY, this.maxFrame);
                 this.moving = false;
+                this.direction = "idle"
             });
             this.drawInventoryItems()
         }
@@ -58,16 +59,12 @@ export default class Player {
         if (this.frameX < 15 && this.direction === "idle") {
             this.frameX++
         } else this.frameX = 12
-        
-        // if (this.frameX >= 1 && this.moving) {
-        //     this.frameX++;
-        //     this.frameY = 1;
         }
     }
 
     movePlayer(item) {
-        if (this.keys.length === 0) {
-            this.moving = false;
+        if (this.keys.length === 0 && this.moving === false) {
+            // this.moving = false;
             this.direction = "idle";
             // this.frameX = 0;
             // this.frameY = 1;

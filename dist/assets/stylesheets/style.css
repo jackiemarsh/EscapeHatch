@@ -10,6 +10,23 @@
     100%  {background-color: rgb(45, 48, 236)}
     /* 100% {background-color: rgb(45, 207, 236)} */
   }
+
+.clock {
+  background: rgb(45, 207, 236);
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  height: 75px;
+  width: 100px;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  color: rgb(45, 48, 236);
+  font-size: 30px;
+  font-family: Orbitron;
+  letter-spacing: 2px;
+  z-index: 1000;
+}
   
 #game-canvas {
     width: 900px;

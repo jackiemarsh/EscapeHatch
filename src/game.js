@@ -1,6 +1,7 @@
 import GameView from "./game_view";
 import Player from "./player";
 import Inventory from "./inventory";
+import * as clock from "./clock";
 
 export default class Game {
     constructor() {
@@ -13,6 +14,16 @@ export default class Game {
         gameView.startAnimating(15);
     }
     
-    
+    gameWin() {
+        game.timer.stop();
+    }
+
+    gameOver() {
+        game.timer.stop();
+    }
+
+    gameStart() {
+        game.timer.restart();
+    }
 }
   
