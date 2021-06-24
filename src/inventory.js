@@ -11,14 +11,23 @@ export default class Inventory {
         this.inventoryItems = this.generateAllItems();
         this.columns = 6;
         this.rows = 2;
+
+        this.goldCoins = {
+            width: 32,
+            height: 32,
+            frameX: 0,
+            speed: 2
+        };
+
         this.canvas = document.getElementById("inventory-canvas");
         this.ctx = this.canvas.getContext("2d", { alpha: true });
         // this.ctx.mozImageSmoothingEnabled = false;
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
-
+        this.moveCoin = this.moveCoin.bind(this);
         this.generateAllItems = this.generateAllItems.bind(this);
+        setInterval(this.moveCoin, 300, this.goldCoins);
     };
 
 
@@ -88,19 +97,36 @@ export default class Inventory {
         //     };
     };
 
+    moveCoin(sprite) {
+        if (sprite.frameX < 8) sprite.frameX++;
+        else sprite.frameX = 0;
+    } 
+
     drawInventory() {
         // this.ctx.fillStyle = "lightgray";
         // this.ctx.fillRect(this.x, this.y, this.w-28, this.h-28);
 
         const coin = new Image();
         coin.src = "../dist/assets/inventory/coin_gold.png"
-        for (let i = 0; i<this.canvas.width; i+=50) {
-            for (let j = 0; j<this.canvas.clientHeight; j+=30) {
+        // for (let i = 0; i<this.canvas.width; i+=50) {
+        //     for (let j = 0; j<this.canvas.clientHeight; j+=30) {
                 coin.onload = () => { 
-                this.ctx.drawImage(coin, 0, 0, 32, 32, i, j, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 0, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 65, 0, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 130, 0, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 195, 0, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 275, 0, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 275, 70, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 275, 125, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 195, 125, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 130, 125, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 65, 125, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 125, 25, 25)
+                    this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 70, 25, 25)
                 }
-            }
-        }
+                requestAnimationFrame(this.drawInventory.bind(this));
+        //     }
+        // }
     };
 
 }

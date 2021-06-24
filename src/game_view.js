@@ -20,12 +20,11 @@ export default class GameView {
         this.moveBackground = this.moveBackground.bind(this);
         this.startAnimating = this.startAnimating.bind(this);
         this.animate = this.animate.bind(this);
-        setInterval(this.moveBackground, 600, this.grassFrame);
-        
         this.inventory = new Inventory(700, 100, 328, 140);
+        setInterval(this.moveBackground, 600, this.grassFrame);
         console.log("game view inventory", this.inventory)
         this.player = new Player(this.canvas, this.inventory);
-        // this.inventory.animateInventory();
+        this.inventory.drawInventory();
         // this.player.drawInventoryItems();
         // this.drawAllItems();
        

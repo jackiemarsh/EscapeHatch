@@ -1,12 +1,13 @@
 import GameView from "./game_view";
 import Inventory from "./inventory";
+import Item from "./item";
 
 export default class Player {
         constructor(canvas, allItems) {
             this.x = 250,
             this.y = 250,
             this.width = 48,
-            this.height = 60,
+            this.height = 56,
             this.frameX = 12,
             this.frameY = 0,
             // this.maxFrame = 4,
@@ -16,7 +17,10 @@ export default class Player {
             this.moving = false,
             this.direction = "idle",
             this.keys = [];
-            this.inventory = new Array();
+            this.inventory = [
+                new Item("skull", 0, 0, 346, 398, Math.random() * 855, Math.random() * 600, 35, 40, "../dist/assets/inventory/skull.png"),
+                new Item("wood", 0, 0, 514, 423, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/wood.png"),
+                                ];
             this.allItems = allItems;
  
             this.renderCtx = this.allItems.ctx;
@@ -34,6 +38,7 @@ export default class Player {
                 console.log(this.direction, this.frameX, this.frameY, this.maxFrame);
                 this.moving = false;
             });
+            this.drawInventoryItems()
         }
 
     handlePlayerFrame() {
@@ -79,13 +84,16 @@ export default class Player {
             this.x -= this.speed;
             this.moving = true;
             this.direction = "left";
+            this.frameX = 12;
+            this.frameY = 3;
+            this.maxFrame = 15;
         }
         if (this.keys["ArrowDown"] && this.y < this.canvas.height - this.height) {
             this.y += this.speed;
             this.moving = true;
             this.direction = "down";
             this.frameX = 0;
-            this.frameY = 3;
+            this.frameY = 4;
             this.maxFrame = 12;
         }
         if (this.keys["ArrowRight"] && this.x < this.canvas.width - this.width) {
@@ -94,7 +102,7 @@ export default class Player {
             this.direction = "right";
             this.frameY = 0;
             this.frameX = 3;
-            this.maxFrame = 5;
+            this.maxFrame = 8;
         }
         if (this.keys["l"]) {
             let item = this.collideRect()
@@ -113,12 +121,12 @@ export default class Player {
     }
 
     drawInventoryItems() {
-        console.log("inventory", this.inventory)
+        console.log("drawinventoryitems is being called", this.inventory)
         if (this.inventory.length) { 
             this.inventory.forEach(item => {
-                console.log("item src", item.src)
+                console.log("dii item src", item.src)
                 let index = this.inventory.indexOf(item);
-                let i = (this.w / this.columns * (index % this.columns))+5
+                let i = (this.allItems.w / this.allItems.columns * (index % this.allItems.columns))+5
                 let jdex = 0
                     if (index > 5) {
                         jdex = 1
@@ -127,9 +135,8 @@ export default class Player {
                 console.log(newItem)
                 newItem.src = item.src;
                 console.log(newItem.src)
-                if (newItem.complete) { 
-                    this.renderCtx.drawImage(newItem, item.x, item.y, item.w, item.h, i, (this.h / this.rows * jdex)+18 , item.dw, item.dh) 
-                  
+                newItem.onload = () => { 
+                    this.renderCtx.drawImage(newItem, item.x, item.y, item.w, item.h, i, (this.allItems.h / this.allItems.rows * jdex)+18 , item.dw, item.dh); 
                 }
             });
         }
@@ -137,7 +144,7 @@ export default class Player {
 
     addItem(item) {
         console.log("addItem")
-        if (this.inventory.length == this.inventory.columns) {
+        if (this.inventory.length == this.allItems.columns*2) {
             console.log("in the if st")
             item.vy = -4;
             return false
