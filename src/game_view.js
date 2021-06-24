@@ -8,10 +8,9 @@ export default class GameView {
         this.ctx = this.canvas.getContext("2d");
         this.canvas.width = 900;
         this.canvas.height = 600;
-        this.player = new Player(this.canvas);
         this.then = 0;
         this.fpsInterval = 0;
-
+        
         this.grassFrame = {
             width: 50,
             height: 150,
@@ -22,11 +21,18 @@ export default class GameView {
         this.startAnimating = this.startAnimating.bind(this);
         this.animate = this.animate.bind(this);
         setInterval(this.moveBackground, 600, this.grassFrame);
-
-
-        const inventory = new Inventory(700, 100, 300, 120);
-        inventory.drawInventory()
         
+        this.inventory = new Inventory(700, 100, 328, 140);
+        console.log("game view inventory", this.inventory)
+        this.player = new Player(this.canvas, this.inventory);
+        // this.inventory.animateInventory();
+        // this.player.drawInventoryItems();
+        // this.drawAllItems();
+       
+          // this.ctx.mozImageSmoothingEnabled = false;
+        // this.ctx.webkitImageSmoothingEnabled = false;
+        // this.ctx.msImageSmoothingEnabled = false;
+        // this.ctx.imageSmoothingEnabled = false;
     }
     
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -41,7 +47,18 @@ export default class GameView {
     // setInterval(moveBackground, 600, this.grassFrame);
     // setInterval(this.moveBackground.bind(this), 600, this.grassFrame);
 
-    
+    drawAllItems() {
+       
+        this.inventory.inventoryItems.forEach(item => {
+            let newItem = new Image();
+            newItem.src = item.src;
+
+            if (newItem.complete) { 
+                this.ctx.drawImage(newItem, item.x, item.y, item.w, item.h, item.dx, item.dy, item.dw, item.dh) 
+            }
+        });
+    };
+
     startAnimating(fps) {
         let startTime;
         this.fpsInterval = 1000/fps;
@@ -73,6 +90,7 @@ export default class GameView {
         if (elapsed > this.fpsInterval) {
             // console.log("rendering")
             this.then = now - (elapsed % this.fpsInterval);
+
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.ctx.drawImage(background1, 0, 0, this.canvas.width, 134);
             this.ctx.drawImage(background3, 0, 50, background3.width, 50, 0, 133, this.canvas.width, 280);
@@ -89,7 +107,26 @@ export default class GameView {
             this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width+20, this.player.height+20);
             this.player.movePlayer();
             this.player.handlePlayerFrame();
+            
         }
         requestAnimationFrame(this.animate.bind(this));
+        this.drawAllItems();
+        // this.player.drawInventoryItems();
     };
+
+  
+    // for (let index = this.items.length-1; index > -1; --index) {
+    //     let item = items[index];
+
+    //     if (item.y + item.h >= map_floor && item.collideRect(player) && pointer.down && item.collidePoint(pointer)) {
+    //       front_item_index = index;// store the frontmost item index
+    //     }
+
+    //     // item.updatePosition(map_gravity, map_friction, map_floor);
+    //     this.ctx.drawImage(tile_set, item.sx, item.sy, item.w, item.h, Math.round(item.x), Math.round(item.y), item.w, item.h);
+    //   }
+    //   // If there is an item selected, add it to the inventory
+    //   if (front_item_index != undefined && inventory.addItem(items[front_item_index])) items.splice(front_item_index, 1); 
+  
+
 };
