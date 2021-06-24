@@ -9,6 +9,7 @@ export default class Inventory {
         this.allItems = new Array();
         this.playerInventory = new Array();
         this.inventoryItems = this.generateAllItems();
+        this.gameItems = this.generateGameItems();
         this.columns = 6;
         this.rows = 2;
 
@@ -27,6 +28,7 @@ export default class Inventory {
         // this.ctx.imageSmoothingEnabled = false;
         this.moveCoin = this.moveCoin.bind(this);
         this.generateAllItems = this.generateAllItems.bind(this);
+        this.generateGameItems = this.generateGameItems.bind(this);
         setInterval(this.moveCoin, 300, this.goldCoins);
     };
 
@@ -44,22 +46,38 @@ export default class Inventory {
     //   let player = new Player();
     //   let inventory = new Inventory(120, 8, 128, 32);
     generateAllItems() {
+        let xLow = 170;
+        let yLow = 50;
+        let xHigh = 850;
+        let yHigh = 550;
+        let dXMin = Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow;
+        let dYMin = Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow;
         let generatedItems = [
             //  new Item("barrel", 50, 200, 950, 600, Math.random() * 250, Math.random() * 120, 80, 51, "../dist/assets/inventory/barrel.png"),
-             new Item("bread", 0, 0, 466, 319, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/bread.png"),
-             new Item("coin", 0, 0, 345, 417, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/coin.png"),
-             new Item("crystal", 0, 0, 361, 538, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/crystal.png"),
-             new Item("shell", 100, 0, 50, 50, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/shell.png"),
-             new Item("key", 32, 0, 32, 32, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/KeyIcons.png"),
-             new Item("letters", 0, 0, 581, 458, Math.random() * 855, Math.random() * 600, 45, 45, "../dist/assets/inventory/paper.png"),
-             new Item("bottle", 0, 0, 400, 500, Math.random() * 855, Math.random() * 600, 45, 45, "../dist/assets/inventory/bottle.png"),
-             new Item("quiche", 0, 0, 290, 290, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/quiche.png"),
-             new Item("skull", 0, 0, 346, 398, Math.random() * 855, Math.random() * 600, 35, 40, "../dist/assets/inventory/skull.png"),
-             new Item("wood", 0, 0, 514, 423, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/wood.png"),
+             new Item("bread", 0, 0, 466, 319, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/bread.png"),
+             new Item("coin", 0, 0, 345, 417, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/coin.png"),
+             new Item("crystal", 0, 0, 361, 538, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/crystal.png"),
+             new Item("shell", 100, 0, 50, 50, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/shell.png"),
+             new Item("key", 32, 0, 32, 32, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/KeyIcons.png"),
+             new Item("letters", 0, 0, 581, 458, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "../dist/assets/inventory/paper.png"),
+             new Item("bottle", 0, 0, 400, 500, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "../dist/assets/inventory/bottle.png"),
+             new Item("quiche", 0, 0, 290, 290, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/quiche.png"),
+             new Item("skull", 0, 0, 346, 398, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 40, "../dist/assets/inventory/skull.png"),
+             new Item("wood", 0, 0, 514, 423, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/wood.png"),
             ];
         return generatedItems;
     }
 
+    generateGameItems() {
+        let gameItems = []
+        while (gameItems.length < 8) {
+            let el = this.inventoryItems[Math.floor(Math.random()*this.inventoryItems.length)]
+            if (!gameItems.includes(el)) {
+                gameItems.push(el) 
+            }
+        }
+        return gameItems;
+    };
     // drawInventoryItems() {
     //     this.inventoryItems = this.generateAllItems();
 

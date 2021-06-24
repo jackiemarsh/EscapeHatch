@@ -105,7 +105,7 @@ export default class Player {
             this.maxFrame = 8;
         }
         if (this.keys["l"]) {
-            let item = this.collideRect()
+            let item = this.collideRect();
             console.log("l key", item)
             if (item) {
                 console.log("l is in keys")
@@ -168,15 +168,22 @@ export default class Player {
     collideRect() {
         let arr = this.allItems.inventoryItems;
         for (let i =0; i<arr.length; i++) { 
-        // this.allItems.inventoryItems.forEach(item => {
-            if (!(this.x > arr[i].dx + arr[i].dw) || !(this.x + this.w < arr[i].dx) || !(this.y > arr[i].dy + arr[i].dh) || !(this.y + this.h < arr[i].dy)) {
-                // console.log("false", item)
+            let pcX = (this.x+this.width)/2;
+            let pcY = (this.y+this.height)/2;
+            let objX = (arr[i].dx+arr[i].dw)/2;
+            let objY = (arr[i].dy+arr[i].dh)/2;
+            console.log(this.x, this.width, this.y, this.height)
+            console.log("test", arr[i].name, pcX, pcY, objX, objY)
+
+            console.log(Math.abs(pcX - objX), Math.abs(pcY + objY))
+            if (Math.abs(pcX - objX) <15 && Math.abs(pcY - objY) < 15) {
+                console.log("true", arr[i], this.x, this.y, arr[i].dw, arr[i].dh, arr[i].dx, arr[i].dy)
                 return arr[i];
-            } else {
-                // console.log("true", item, this.x, this.y, item.dw, item.dh, item.dx, item.dy)
-                return false;
-            }
+            } 
+            
         }
+        console.log("false")
+        return false;
     };
 
     // keyInventory(item) {

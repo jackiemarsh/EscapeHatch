@@ -17,6 +17,7 @@ export default class GameView {
             frameX: 0,
             speed: 2
         };
+
         this.moveBackground = this.moveBackground.bind(this);
         this.startAnimating = this.startAnimating.bind(this);
         this.animate = this.animate.bind(this);
@@ -25,6 +26,7 @@ export default class GameView {
         console.log("game view inventory", this.inventory)
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
+        console.log("game view gameinventory", this.inventory.gameItems)
         // this.player.drawInventoryItems();
         // this.drawAllItems();
        
@@ -48,7 +50,7 @@ export default class GameView {
 
     drawAllItems() {
        
-        this.inventory.inventoryItems.forEach(item => {
+        this.inventory.gameItems.forEach(item => {
             let newItem = new Image();
             newItem.src = item.src;
 
