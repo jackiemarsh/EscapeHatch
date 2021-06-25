@@ -19,7 +19,7 @@ body {
   }
 
   .clock {
-    background: rgb(45, 207, 236);
+    background: rgb(47, 177, 177);
     position: absolute;
     top: 16px;
     left: 16px;
@@ -201,14 +201,14 @@ body {
 
 .start-btn {
   position: absolute;
-  color: aqua;
+  color: rgb(47, 177, 177);
   top: 50%;
   right: 45%;
   transform: translate(-50%, -50%);
 } 
 .play-btn {
   position: absolute;
-  color: aqua;
+  color: rgb(47, 177, 177);
   top: 50%;
   right: 35%;
   transform: translate(-50%, -50%);
@@ -252,7 +252,7 @@ button:hover {
 .win-box, .lose-box {
   position: absolute;
   background: transparent;
-  color: aqua;
+  color: rgb(47, 177, 177);
   top: 50%;
   right: 45%;
   transform: translate(-50%, -50%);
