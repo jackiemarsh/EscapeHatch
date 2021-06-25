@@ -44,18 +44,21 @@ export default class Player {
         document.addEventListener("keyup", (e) => {
             this.moving = false;
             this.direction = "idle"
+            console.log("idle")
         });
 
     }
 
     movePlayer(e) {
-        // if (this.moving === false) {
+        if (this.moving === false) {
+            this.frameX = 12;
+            this.frameY = 0;
         //     // this.moving = false;
         //     this.direction = "idle";
         //     // this.frameX = 0;
         //     // this.frameY = 1;
         //     // this.maxFrame = 2;
-        // }
+        }
         switch (e.key) {
             case "ArrowUp":
                 if (this.y > 175) {

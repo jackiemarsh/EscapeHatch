@@ -1,3 +1,10 @@
+html {
+  min-height: 600px;
+}
+body {
+  min-height: 600px;
+  position: relative;
+}
 .screen-wrapper {
   position: relative;
   width: 900px;
@@ -174,3 +181,15 @@
   }
 }
 
+.hidden {
+  display: none;
+}
+.opening-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}

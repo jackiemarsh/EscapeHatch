@@ -24,6 +24,24 @@
     <link rel="stylesheet" href="./assets/stylesheets/style.css">
 </head>
 <body>
+    <div class="opening-box"> 
+        <article class='instructions animate-expand not-game'>
+            <p>Arrow Keys - Make the pirate swim</p>
+            <p>"l" adds an object to your inventory</p>
+            <p>"a" drops it</p>
+            <p>Watch out for the clock!</p>
+        </article>
+        
+        <button class='go-back animate-expand not-game'>Go back</button>
+        
+        <article class='game-story animate-expand not-game'>
+            <p>Yaaarrrrggh! The seas be rough, and your fortune has turned, along with your ship</p>
+            <p>Trapped in the shipwreck, you must escape</p>
+            <p>You must gather the correct object, before time runs out...</p>
+        </article>
+        
+        <button class='play-btn animate-expand not-game'>Start</button>
+    </div>
     <div class="screen-wrapper">
         <div id="clock-display" class="clock"></div>
         <canvas id="game-canvas"> </canvas>
@@ -43,7 +61,6 @@
     </div>
    
     <script src="main.js"></script>
-    <script src="clock.js"></script>
 
 </body>
 </html>
