@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         instructions.classList.add('hidden');
     })
     
-    playBtn.addEventListener('click', gameView.newGame);
+    // playBtn.addEventListener('click', gameView.newGame);
 
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
