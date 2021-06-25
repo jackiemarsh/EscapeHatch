@@ -1,7 +1,6 @@
 import GameView from "./game_view";
 import Player from "./player";
 import Inventory from "./inventory";
-import * as clock from "./clock";
 
 export default class Game {
     constructor() {
@@ -12,18 +11,29 @@ export default class Game {
         this.canvas = gameView.canvas;
         this.ctx = gameView.ctx;
         gameView.startAnimating(15);
+        this.timer();
     }
     
-    gameWin() {
-        game.timer.stop();
+    timer() {
+        const startMinutes = 2;
+        // this.level.time when harder levels built
+        let time = startMinutes*60
+        const countdownEl = document.getElementById("clock-display");
+        
+        let startTime = new Date().getTime();
+        let runClock = setInterval(() => {
+            if(Math.floor(new Date().getTime()) - startTime > 118000){
+                clearInterval(runClock);
+                return false;
+            }
+            let m = Math.floor(time/60);
+            let s = Math.floor(time%60);
+            
+            s = s < 10 ? "0" + s : s;
+            countdownEl.innerHTML = `${m}:${s}`;
+            time--;
+        }, 1000)
     }
 
-    gameOver() {
-        game.timer.stop();
-    }
-
-    gameStart() {
-        game.timer.restart();
-    }
 }
   

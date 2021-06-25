@@ -16,7 +16,6 @@ export default class Player {
             this.tickCount = 0; 
             this.moving = false,
             this.direction = "idle",
-            this.keys = [];
             this.inventory = [
                 new Item("skull", 0, 0, 346, 398, Math.random() * 855, Math.random() * 600, 35, 40, "../dist/assets/inventory/skull.png"),
                 new Item("wood", 0, 0, 514, 423, Math.random() * 855, Math.random() * 600, 35, 35, "../dist/assets/inventory/wood.png"),
@@ -25,96 +24,91 @@ export default class Player {
  
             this.renderCtx = this.allItems.ctx;
             this.canvas = canvas;
-
-            window.addEventListener("keydown", (e) => {
-                this.keys[e.key] = true;
-                console.log(this.keys);
-                this.moving = true;
-            });
-            
-            window.addEventListener("keyup", (e) => {
-                delete this.keys[e.key];
-                console.log(this.keys);
-                console.log(this.direction, this.frameX, this.frameY, this.maxFrame);
-                this.moving = false;
-                this.direction = "idle"
-            });
+            this.movePlayer = this.movePlayer.bind(this);
             this.drawInventoryItems()
         }
-
-    handlePlayerFrame() {
-        // this.tickCount += 1;
-        // if (this.tickCount > this.speed) {
-        //     this.tickCount = 0;
-        //     if (this.frameX < this.maxFrame-1) {
-        //         this.frameX++;
-        //         // console.log(this.frameX);
-        //     } else {
-        //         this.frameX = 0;
-        //     }
-        // } 
-        this.tickCount += 1;
-        if (this.tickCount > this.speed) {
-            this.tickCount = 0;
-        if (this.frameX < 15 && this.direction === "idle") {
-            this.frameX++
-        } else this.frameX = 12
-        }
-    }
-
-    movePlayer(item) {
-        if (this.keys.length === 0 && this.moving === false) {
-            // this.moving = false;
-            this.direction = "idle";
-            // this.frameX = 0;
-            // this.frameY = 1;
-            // this.maxFrame = 2;
-        }
-        if (this.keys["ArrowUp"] && this.y > 175) {
-            console.log("up is in keys")
-            this.y -= this.speed;
-            // this.frameY = 1;
-            this.moving = true;
-            this.direction = "up";
-        }
-        if (this.keys["ArrowLeft"] && this.x > 0) {
-            this.x -= this.speed;
-            this.moving = true;
-            this.direction = "left";
-            this.frameX = 12;
-            this.frameY = 3;
-            this.maxFrame = 15;
-        }
-        if (this.keys["ArrowDown"] && this.y < this.canvas.height - this.height) {
-            this.y += this.speed;
-            this.moving = true;
-            this.direction = "down";
-            this.frameX = 0;
-            this.frameY = 4;
-            this.maxFrame = 12;
-        }
-        if (this.keys["ArrowRight"] && this.x < this.canvas.width - this.width) {
-            this.x += this.speed;
-            this.moving = true;
-            this.direction = "right";
-            this.frameY = 0;
-            this.frameX = 3;
-            this.maxFrame = 8;
-        }
-        if (this.keys["l"]) {
-            let item = this.collideRect();
-            console.log("l key", item)
-            if (item) {
-                console.log("l is in keys")
-                this.addItem(item);
-                console.log("next")
-                this.drawInventoryItems();
+        
+        handlePlayerFrame() {
+            this.tickCount += 1;
+            if (this.tickCount > this.speed) {
+                this.tickCount = 0;
+                if (this.frameX < 15 && this.direction === "idle") {
+                    this.frameX++
+                } else this.frameX = 12
             }
         }
-        if (this.keys["a"] && this.inventory.includes(item)) {
-            this.dropItem(item);
-            this.drawInventoryItems();
-        }
+        
+    keyListeners() {
+        document.addEventListener("keydown", this.movePlayer);
+        
+        document.addEventListener("keyup", (e) => {
+            this.moving = false;
+            this.direction = "idle"
+        });
+
+    }
+
+    movePlayer(e) {
+        // if (this.moving === false) {
+        //     // this.moving = false;
+        //     this.direction = "idle";
+        //     // this.frameX = 0;
+        //     // this.frameY = 1;
+        //     // this.maxFrame = 2;
+        // }
+        switch (e.key) {
+            case "ArrowUp":
+                if (this.y > 175) {
+                    console.log("up is in keys")
+                    this.y -= this.speed;
+                    // this.frameY = 1;
+                    this.moving = true;
+                    this.direction = "up"; 
+                }
+                break;
+            case "ArrowLeft":
+                if (this.x > 0) {
+                    this.x -= this.speed;
+                    this.moving = true;
+                    this.direction = "left";
+                    this.frameX = 12;
+                    this.frameY = 3;
+                }
+                break;
+            case "ArrowDown":
+                if (this.y < this.canvas.height - this.height) {
+                    this.y += this.speed;
+                    this.moving = true;
+                    this.direction = "down";
+                    this.frameX = 0;
+                    this.frameY = 4;
+                }
+                break;
+            case "ArrowRight":
+                if (this.x < this.canvas.width - this.width) {
+                    this.x += this.speed;
+                    this.moving = true;
+                    this.direction = "right";
+                    this.frameY = 0;
+                    this.frameX = 3;
+                }
+                break;
+            case "l":
+            let item = this.collideRect();
+                if (item) {
+                    this.addItem(item);
+                    this.drawInventoryItems();
+                }
+                break;
+            case "a":
+                if (this.inventory.includes(item)) {
+                    this.dropItem(item);
+                    this.drawInventoryItems();
+                }
+                break;
+        default:
+                break;
+            }
     }
 
     drawInventoryItems() {

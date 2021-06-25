@@ -106,7 +106,7 @@ export default class GameView {
             this.ctx.drawImage(environment, 350, 82, 40, 40, 825, 535, 80, 80);
 
             this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width+20, this.player.height+20);
-            this.player.movePlayer();
+            this.player.keyListeners();
             this.player.handlePlayerFrame();
             
         }
