@@ -22,7 +22,7 @@ export default class Game {
         
         let startTime = new Date().getTime();
         let runClock = setInterval(() => {
-            if(Math.floor(new Date().getTime()) - startTime > 61000){
+            if(Math.floor(new Date().getTime()) - startTime > 62000){
                 clearInterval(runClock);
                 return false;
             } 

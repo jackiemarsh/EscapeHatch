@@ -25,21 +25,31 @@
 </head>
 <body>
     <div class="opening-box"> 
+        <img class="map" src="./assets/images/map.png" alt="map">
         <button class='start-btn'>Start</button>
         <button class="play-btn">Play</button>
-        <article class='game-story'>
-            <p>Yaaarrrrggh! The seas be rough, and your fortune has turned, along with your ship</p>
-            <p>Trapped in the shipwreck, you must escape</p>
-            <p>You must gather the correct object, before time runs out...</p>
-        </article>
-        <article class='instructions'>
-            <p>Arrow Keys - Make the pirate swim</p>
-            <p>"l" adds an object to your inventory</p>
-            <p>"a" drops it</p>
-            <p>Watch out for the clock!</p>
-        </article>
+        <div class="menu">
+            <article class='game-story'>
+                <p>Yaaarrrrggh! The seas be rough, and your luck has turned, along with your ship</p>
+                <p>Trapped in the shipwreck, you must escape</p>
+                <p>You must gather the correct objects, before time runs out...</p>
+            </article>
+            <article class='instructions'>
+                <p>Arrow Keys - Make the pirate swim</p>
+                <p>"l" adds an object to your inventory</p>
+                <p>"a" drops it</p>
+                <p>Watch the clock!</p>
+            </article>
+        </div>
         
     </div>
+
+    <div class="end-game">
+        <img src="./assets/images/map.png" alt="map">
+        <div class="win-box">You win!</div>
+        <div class="lose-box">Game Over</div>
+    </div>
+
     <div class="screen-wrapper">
         <div id="clock-display" class="clock"></div>
         <canvas id="game-canvas"> </canvas>

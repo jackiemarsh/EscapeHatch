@@ -11,7 +11,8 @@ export default class Player {
             this.frameX = 0,
             this.frameY = 0,
             this.maxFrame = 5,
-            this.speed = 8,
+            this.frameSpeed = 1,
+            this.speed = 6,
             // this.ticksPerFrame = ;
             this.tickCount = 0; 
             this.moving = false,
@@ -28,15 +29,15 @@ export default class Player {
             this.drawInventoryItems()
         }
         
-        handlePlayerFrame() {
-            this.tickCount += 1;
-            if (this.tickCount > this.speed) {
-                this.tickCount = 0;
-                if (this.frameX < this.maxFrame) {
-                    this.frameX++
-                } else this.frameX = 0
-            }
+    handlePlayerFrame() {
+        this.tickCount += this.frameSpeed;
+        if (this.tickCount > this.speed) {
+            this.tickCount = 0;
+            if (this.frameX < this.maxFrame) {
+                this.frameX++
+            } else this.frameX = 0
         }
+    }
         
     keyListeners() {
         document.addEventListener("keydown", this.movePlayer);
@@ -55,20 +56,16 @@ export default class Player {
         if (this.moving === false) {
             this.frameX = 0;
             this.frameY = 0;
-        //     // this.moving = false;
-        //     this.direction = "idle";
-        //     // this.frameX = 0;
-        //     // this.frameY = 1;
-        //     // this.maxFrame = 2;
+            this.frameSpeed = 1;
         }
         switch (e.key) {
             case "ArrowUp":
                 if (this.y > 175) {
-                    console.log("up is in keys")
                     this.y -= this.speed;
                     this.frameY = 1;
                     this.moving = true;
-                    this.direction = "up"; 
+                    this.direction = "up";
+                    this.frameSpeed = 3;
                 }
                 break;
             case "ArrowLeft":
@@ -78,6 +75,7 @@ export default class Player {
                     this.direction = "left";
                     this.frameX = 0;
                     this.frameY = 0;
+                    this.frameSpeed = 3;
                 }
                 break;
             case "ArrowDown":
@@ -88,6 +86,7 @@ export default class Player {
                     this.frameX = 0;
                     this.frameY = 3;
                     this.maxFrame = 12;
+                    this.frameSpeed = 3;
                 }
                 break;
             case "ArrowRight":
@@ -96,6 +95,7 @@ export default class Player {
                     this.moving = true;
                     this.direction = "right";
                     this.frameY = 2;
+                    this.frameSpeed = 3;
                 }
                 break;
             case "l":
@@ -120,7 +120,6 @@ export default class Player {
         console.log("drawinventoryitems is being called", this.inventory)
         if (this.inventory.length) { 
             this.inventory.forEach(item => {
-                console.log("dii item src", item.src)
                 let index = this.inventory.indexOf(item);
                 let i = (this.allItems.w / this.allItems.columns * (index % this.allItems.columns))+5
                 let jdex = 0
@@ -128,9 +127,7 @@ export default class Player {
                         jdex = 1
                     }
                 let newItem = new Image();
-                console.log(newItem)
                 newItem.src = item.src;
-                console.log(newItem.src)
                 newItem.onload = () => { 
                     this.renderCtx.drawImage(newItem, item.x, item.y, item.w, item.h, i, (this.allItems.h / this.allItems.rows * jdex)+18 , item.dw, item.dh); 
                 }
@@ -139,18 +136,12 @@ export default class Player {
     }
 
     addItem(item) {
-        console.log("addItem")
         if (this.inventory.length == this.allItems.columns*2) {
-            console.log("in the if st")
             item.vy = -4;
             return false
         }
-        console.log("before splice", this.allItems.gameItems, this.allItems.gameItems.indexOf(item))
-
         this.allItems.gameItems.splice(this.allItems.gameItems.indexOf(item), 1)
         this.inventory.push(item)
-        console.log(this.allItems.gameItems)
-        console.log("inv after push", this.inventory)
         return true;
         
     };
@@ -172,12 +163,9 @@ export default class Player {
             let pcY = (this.y+this.height)/2;
             let objX = (arr[i].dx+arr[i].dw)/2;
             let objY = (arr[i].dy+arr[i].dh)/2;
-            console.log(this.x, this.width, this.y, this.height)
-            console.log("test", arr[i].name, pcX, pcY, objX, objY)
 
             console.log(Math.abs(pcX - objX), Math.abs(pcY + objY))
-            if (Math.abs(pcX - objX) <15 && Math.abs(pcY - objY) < 15) {
-                console.log("true", arr[i], this.x, this.y, arr[i].dw, arr[i].dh, arr[i].dx, arr[i].dy)
+            if (Math.abs(pcX - objX) <15 && Math.abs(pcY - objY) < 20) {
                 return arr[i];
             } 
             

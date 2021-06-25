@@ -5,7 +5,6 @@ import GameView from "./game_view";
 import Player from "./player.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    // const game = new Game();
     const startBtn = document.getElementsByClassName('start-btn')[0];
     // const startGame = document.getElementsByClassName('start-game')[0];
     const playBtn = document.getElementsByClassName('play-btn')[0];
@@ -15,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     gameView.startPage();
     
     startBtn.addEventListener('mouseenter', () => {
-        // playBtn.classList.remove('hidden');
+        playBtn.classList.remove('hidden');
         gameStory.classList.remove('hidden');
         instructions.classList.remove('hidden');
     })
     
     startBtn.addEventListener('mouseleave', () => {
-        // playBtn.classList.add('hidden');
+        playBtn.classList.add('hidden');
         gameStory.classList.add('hidden');
         instructions.classList.add('hidden');
     })

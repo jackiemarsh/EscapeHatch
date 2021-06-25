@@ -25,33 +25,36 @@ export default class GameView {
         setInterval(this.moveBackground, 600, this.grassFrame);
         console.log("game view inventory", this.inventory);
         this.inventory = new Inventory(700, 100, 328, 140);
-        // console.log("game view inventory", this.inventory)
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
         console.log("game view gameinventory", this.inventory.gameItems)
         this.player.drawInventoryItems();
         this.drawAllItems();
        
-          // this.ctx.mozImageSmoothingEnabled = false;
+        // this.ctx.mozImageSmoothingEnabled = false;
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
         this.newGame = this.newGame.bind(this);
+        this.winGame = this.winGame.bind(this);
         // this.startAnimating(3);
     }
 
     startPage() {
         // const playBtn = document.getElementsByClassName('play-btn')[0];
         // const gameOver = document.getElementsByClassName('game-over')[0];
-        // const cont = document.getElementsByClassName('cont')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
-        
+        const endBox = document.getElementsByClassName('end-game')[0];
+        const gameOver = document.getElementsByClassName('lose-box')[0];
+        const youWin = document.getElementsByClassName('win-box')[0];
         // playBtn.classList.add('hidden');
         instructions.classList.add('hidden');
         // gameOver.classList.add('hidden');
         gameStory.classList.add('hidden');
-        // cont.classList.add('hidden');
+        youWin.classList.add('hidden');
+        gameOver.classList.add('hidden');
+        endBox.classList.add('hidden');
     }
 
     newGame() {
@@ -64,16 +67,31 @@ export default class GameView {
         let game = new Game();
 
         const openingBox = document.getElementsByClassName('opening-box')[0];
+        const endBox = document.getElementsByClassName('end-game')[0];
         const playBtn = document.getElementsByClassName('play-btn')[0];
-        // const gameOver = document.getElementsByClassName('game-over')[0];
+        const gameOver = document.getElementsByClassName('lose-box')[0];
+        const youWin = document.getElementsByClassName('win-box')[0];
         // const cont = document.getElementsByClassName('cont')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
+        youWin.classList.add('hidden');
+        gameOver.classList.add('hidden');
         openingBox.classList.add('hidden');
+        endBox.classList.add('hidden');
         playBtn.classList.add('hidden');
         instructions.classList.add('hidden');
         // gameOver.classList.add('hidden');
         gameStory.classList.add('hidden');
+    }
+
+    winGame() {
+        const endBox = document.getElementsByClassName('end-game')[0];
+        const youWin = document.getElementsByClassName('win-box')[0];
+
+        if (this.player.inventory.length === 4) {
+            endBox.classList.remove('hidden');
+            youWin.classList.remove('hidden');
+        }
     }
 
     gameOver() {
@@ -151,6 +169,7 @@ export default class GameView {
             this.drawSprite(playerSprite, this.player.width * this.player.frameX, this.player.height * this.player.frameY, this.player.width, this.player.height, this.player.x, this.player.y, this.player.width+20, this.player.height+20);
             this.player.keyListeners();
             this.player.handlePlayerFrame();
+            this.winGame();
             
         }
         requestAnimationFrame(this.animate.bind(this));
