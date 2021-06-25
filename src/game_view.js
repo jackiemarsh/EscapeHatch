@@ -115,7 +115,7 @@ export default class GameView {
         let now, elapsed;
         
         const playerSprite = new Image();
-        playerSprite.src = "../dist/assets/images/guybrush.PNG"
+        playerSprite.src = "../dist/assets/images/guybrush 3.PNG"
         const background1 = new Image();
         background1.src = "../dist/assets/images/underwater.png"
         const background2 = new Image();

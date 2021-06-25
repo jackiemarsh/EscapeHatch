@@ -4,14 +4,14 @@ import Item from "./item";
 
 export default class Player {
         constructor(canvas, allItems) {
-            this.x = 250,
+            this.x = 350,
             this.y = 250,
-            this.width = 48,
-            this.height = 56,
-            this.frameX = 12,
+            this.width = 58,
+            this.height = 84,
+            this.frameX = 0,
             this.frameY = 0,
-            // this.maxFrame = 4,
-            this.speed = 5,
+            this.maxFrame = 5,
+            this.speed = 8,
             // this.ticksPerFrame = ;
             this.tickCount = 0; 
             this.moving = false,
@@ -32,9 +32,9 @@ export default class Player {
             this.tickCount += 1;
             if (this.tickCount > this.speed) {
                 this.tickCount = 0;
-                if (this.frameX < 15 && this.direction === "idle") {
+                if (this.frameX < this.maxFrame) {
                     this.frameX++
-                } else this.frameX = 12
+                } else this.frameX = 0
             }
         }
         
@@ -43,15 +43,17 @@ export default class Player {
         
         document.addEventListener("keyup", (e) => {
             this.moving = false;
-            this.direction = "idle"
-            console.log("idle")
+            this.direction = "idle";
+            this.frameX = 0;
+            this.frameY = 0;
+            this.maxFrame = 5;
         });
 
     }
 
     movePlayer(e) {
         if (this.moving === false) {
-            this.frameX = 12;
+            this.frameX = 0;
             this.frameY = 0;
         //     // this.moving = false;
         //     this.direction = "idle";
@@ -64,7 +66,7 @@ export default class Player {
                 if (this.y > 175) {
                     console.log("up is in keys")
                     this.y -= this.speed;
-                    // this.frameY = 1;
+                    this.frameY = 1;
                     this.moving = true;
                     this.direction = "up"; 
                 }
@@ -74,8 +76,8 @@ export default class Player {
                     this.x -= this.speed;
                     this.moving = true;
                     this.direction = "left";
-                    this.frameX = 12;
-                    this.frameY = 3;
+                    this.frameX = 0;
+                    this.frameY = 0;
                 }
                 break;
             case "ArrowDown":
@@ -84,7 +86,8 @@ export default class Player {
                     this.moving = true;
                     this.direction = "down";
                     this.frameX = 0;
-                    this.frameY = 4;
+                    this.frameY = 3;
+                    this.maxFrame = 12;
                 }
                 break;
             case "ArrowRight":
@@ -92,8 +95,7 @@ export default class Player {
                     this.x += this.speed;
                     this.moving = true;
                     this.direction = "right";
-                    this.frameY = 0;
-                    this.frameX = 3;
+                    this.frameY = 2;
                 }
                 break;
             case "l":
