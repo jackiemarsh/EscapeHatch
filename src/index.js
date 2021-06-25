@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     gameView.startPage();
     
     startBtn.addEventListener('mouseenter', () => {
-        playBtn.classList.remove('hidden');
+        // playBtn.classList.remove('hidden');
         gameStory.classList.remove('hidden');
         instructions.classList.remove('hidden');
     })
     
     startBtn.addEventListener('mouseleave', () => {
-        playBtn.classList.add('hidden');
+        // playBtn.classList.add('hidden');
         gameStory.classList.add('hidden');
         instructions.classList.add('hidden');
     })

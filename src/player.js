@@ -74,7 +74,7 @@ export default class Player {
                     this.moving = true;
                     this.direction = "left";
                     this.frameX = 0;
-                    this.frameY = 0;
+                    this.frameY = 4;
                     this.frameSpeed = 3;
                 }
                 break;

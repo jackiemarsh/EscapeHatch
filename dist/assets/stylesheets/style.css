@@ -69,12 +69,13 @@ body {
   right: 0;
   top: 0;
   z-index: -1;
+  max-width: 900px;
 }
 
 .bubble {
   border-radius: 50%;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 3px 1px rgba(255, 255, 255, 1);
-  border: 3px solid lightblue;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 3px 1px rgb(255, 255, 255);
+  border: 2px solid lightblue;
   height: 30px;
   position: absolute;
   width: 30px;
@@ -93,13 +94,14 @@ body {
   width: 180px;
 /* } */ */
 
-.x1 {
+/* .x1 {
   animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate; 
   left: 10%;
   top: 5%; 
   transform: scale(0.6);
   /* z-index: 100; */
-}
+/* } */
+
 .x2 {
   animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
   left: 5%;
@@ -165,10 +167,10 @@ body {
 
 @keyframes animateBubble {
   0% {
-      margin-top: 1000px;
+      margin-top: 910px;
   }
   100% {
-      margin-top: -100%;
+      margin-top: -10%;
   }
 }
 
@@ -199,17 +201,16 @@ body {
 
 .start-btn {
   position: absolute;
-  background: wheat;
   color: aqua;
   top: 50%;
-  right: 50%;
+  right: 45%;
   transform: translate(-50%, -50%);
 } 
 .play-btn {
   position: absolute;
   color: aqua;
   top: 50%;
-  right: 40%;
+  right: 35%;
   transform: translate(-50%, -50%);
 } 
 
@@ -218,12 +219,13 @@ body {
   top: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
+  left: 50vw;
 } 
 
 .menu {
   /* position: absolute; */
   background: wheat;
-  color: aqua;
+  color: blue;
   width: 500px;
   /* top: 50%;
   left: 50%;
@@ -231,21 +233,33 @@ body {
 }
 
 button {
-  background: whitesmoke;
-  height: 50px;
-  width: 50px;
+  background: transparent;
+  height: auto;
+  width: auto;
   font-family: cursive;
+  font-size: 30px;
   color: blue;
+  border: none;
+  padding: 0px 10px;
 }
+
 button:hover {
   cursor: pointer;
+  background: lightgray;
+  border-radius: 5px;
 }
 
 .win-box, .lose-box {
   position: absolute;
-  background: wheat;
+  background: transparent;
   color: aqua;
   top: 50%;
-  right: 50%;
+  right: 45%;
   transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  font-family: cursive;
+  font-size: 30px;
+  color: blue;
+  text-align: center;
 }

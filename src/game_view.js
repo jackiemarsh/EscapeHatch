@@ -44,12 +44,16 @@ export default class GameView {
         // const playBtn = document.getElementsByClassName('play-btn')[0];
         // const gameOver = document.getElementsByClassName('game-over')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
+        const clockDisplay = document.getElementsByClassName('clock')[0];
+        const inventoryCanvas = document.getElementsByClassName('inventory-canvas')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
         const endBox = document.getElementsByClassName('end-game')[0];
         const gameOver = document.getElementsByClassName('lose-box')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
         // playBtn.classList.add('hidden');
         instructions.classList.add('hidden');
+        clockDisplay.classList.add('hidden');
+        inventoryCanvas.classList.add('hidden');
         // gameOver.classList.add('hidden');
         gameStory.classList.add('hidden');
         youWin.classList.add('hidden');
@@ -64,24 +68,30 @@ export default class GameView {
         // this.player = new Player(this.canvas, this.inventory);
         // this.inventory.drawInventory();
         // console.log("game view gameinventory", this.inventory.gameItems)
+        
         let game = new Game();
-
+        
+        const clockDisplay = document.getElementsByClassName('clock')[0];
+        const inventoryCanvas = document.getElementsByClassName('inventory-canvas')[0];
         const openingBox = document.getElementsByClassName('opening-box')[0];
+        const map = document.getElementsByClassName('map')[0];
         const endBox = document.getElementsByClassName('end-game')[0];
         const playBtn = document.getElementsByClassName('play-btn')[0];
         const gameOver = document.getElementsByClassName('lose-box')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
-        // const cont = document.getElementsByClassName('cont')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
-        youWin.classList.add('hidden');
-        gameOver.classList.add('hidden');
+        
         openingBox.classList.add('hidden');
+        map.classList.add('hidden');
         endBox.classList.add('hidden');
         playBtn.classList.add('hidden');
-        instructions.classList.add('hidden');
-        // gameOver.classList.add('hidden');
+        gameOver.classList.add('hidden');
+        youWin.classList.add('hidden');
         gameStory.classList.add('hidden');
+        instructions.classList.add('hidden');
+        clockDisplay.classList.remove('hidden');
+        inventoryCanvas.classList.remove('hidden');
     }
 
     winGame() {
@@ -133,7 +143,7 @@ export default class GameView {
         let now, elapsed;
         
         const playerSprite = new Image();
-        playerSprite.src = "../dist/assets/images/guybrush 3.PNG"
+        playerSprite.src = "../dist/assets/images/guybrush 4.PNG"
         const background1 = new Image();
         background1.src = "../dist/assets/images/underwater.png"
         const background2 = new Image();
