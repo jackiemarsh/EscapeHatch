@@ -5,8 +5,7 @@ import GameView from "./game_view";
 import Player from "./player.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const game = new Game();
-    const gameView = new GameView(game);
+    // const game = new Game();
     const startBtn = document.getElementsByClassName('start-btn')[0];
     // const startGame = document.getElementsByClassName('start-game')[0];
     const playBtn = document.getElementsByClassName('play-btn')[0];
@@ -20,18 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
     //     gameView.play();
     // })
     startBtn.addEventListener('mouseenter', () => {
-        // play.classList.remove('hidden');
+        // playBtn.classList.remove('hidden');
         gameStory.classList.remove('hidden');
         instructions.classList.remove('hidden');
     })
     
     startBtn.addEventListener('mouseleave', () => {
-        // play.classList.add('hidden');
+        // playBtn.classList.add('hidden');
         gameStory.classList.add('hidden');
         instructions.classList.add('hidden');
     })
     
-    startGame.addEventListener('click', gameView.newGame);
+    playBtn.addEventListener('click', gameView.newGame);
+
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
     // canvas.width = 900;

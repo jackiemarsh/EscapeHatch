@@ -35,11 +35,45 @@ export default class GameView {
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
         this.play();
-        this.startAnimating(3);
+        this.newGame();
+        // this.startAnimating(3);
+    }
+    startPage() {
+        // const playBtn = document.getElementsByClassName('play-btn')[0];
+        // const gameOver = document.getElementsByClassName('game-over')[0];
+        // const cont = document.getElementsByClassName('cont')[0];
+        const gameStory = document.getElementsByClassName('game-story')[0];
+        const instructions = document.getElementsByClassName('instructions')[0];
+        
+        // playBtn.classList.add('hidden');
+        instructions.classList.add('hidden');
+        // gameOver.classList.add('hidden');
+        gameStory.classList.add('hidden');
+        // cont.classList.add('hidden');
     }
 
     play() {
         
+    }
+
+    newGame() {
+        let game = new Game();
+        const openingBox = document.getElementsByClassName('opening-box')[0];
+        const playBtn = document.getElementsByClassName('playBtn')[0];
+        const gameOver = document.getElementsByClassName('game-over')[0];
+        // const cont = document.getElementsByClassName('cont')[0];
+        const gameStory = document.getElementsByClassName('game-story')[0];
+        const instructions = document.getElementsByClassName('instructions')[0];
+        openingBox.classList.add('hidden');
+        playBtn.classList.add('hidden');
+        instructions.classList.add('hidden');
+        // gameOver.classList.add('hidden');
+        gameStory.classList.add('hidden');
+        // cont.classList.add('hidden');
+    }
+
+    gameOver() {
+
     }
 
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
