@@ -34,8 +34,14 @@ export default class GameView {
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
+        this.play();
+        this.startAnimating(3);
     }
-    
+
+    play() {
+        
+    }
+
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
     }
@@ -114,7 +120,29 @@ export default class GameView {
         this.drawAllItems();
         // this.player.drawInventoryItems();
     };
+    newGame() {
+        let gameCanvas = document.getElementById('game-canvas');
+        this.game = new Game();
+    }
 
+    // restart() {
+    //     let gameOver = document.getElementsByClassName('game-over')[0];
+    //     let cont = document.getElementsByClassName('cont')[0];
+    //     let transitionEvent;
+
+    //     const gameOverFadeOut = (e) => {
+    //         e.preventDefault();
+
+    //         this.newGame();
+    //         this.gameView.player.KeyListeners();
+    //         // this.pause = false;
+
+    //         gameOver.classList.add('hidden');
+    //         cont.classList.add('hidden');
+            
+    //         document.removeEventListener('keydown', gameOverFadeOut);
+    //     }
+    // }
   
     // for (let index = this.items.length-1; index > -1; --index) {
     //     let item = items[index];

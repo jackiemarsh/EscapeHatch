@@ -6,6 +6,14 @@ import Player from "./player.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const game = new Game();
+    const gameView = new GameView(game);
+    const startBtn = document.getElementsByClassName('start-btn')[0];
+    // const startButton = document.getElementById('start-btn');
+    
+
+    startBtn.addEventListener('click', () => {
+        gameView.play();
+    })
     
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
