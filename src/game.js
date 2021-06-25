@@ -15,17 +15,17 @@ export default class Game {
     }
     
     timer() {
-        const startMinutes = 2;
+        const startMinutes = 1;
         // this.level.time when harder levels built
         let time = startMinutes*60
         const countdownEl = document.getElementById("clock-display");
         
         let startTime = new Date().getTime();
         let runClock = setInterval(() => {
-            if(Math.floor(new Date().getTime()) - startTime === 60000){
+            if(Math.floor(new Date().getTime()) - startTime > 60000){
                 clearInterval(runClock);
                 return false;
-            }
+            } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
             

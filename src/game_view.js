@@ -64,8 +64,8 @@ export default class GameView {
         let game = new Game();
 
         const openingBox = document.getElementsByClassName('opening-box')[0];
-        const playBtn = document.getElementsByClassName('playBtn')[0];
-        const gameOver = document.getElementsByClassName('game-over')[0];
+        const playBtn = document.getElementsByClassName('play-btn')[0];
+        // const gameOver = document.getElementsByClassName('game-over')[0];
         // const cont = document.getElementsByClassName('cont')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
