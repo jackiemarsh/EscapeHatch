@@ -21,22 +21,25 @@ export default class GameView {
         this.moveBackground = this.moveBackground.bind(this);
         this.startAnimating = this.startAnimating.bind(this);
         this.animate = this.animate.bind(this);
-        this.inventory = new Inventory(700, 100, 328, 140);
+        this.inventory = [];
         setInterval(this.moveBackground, 600, this.grassFrame);
-        console.log("game view inventory", this.inventory)
+        console.log("game view inventory", this.inventory);
+        this.inventory = new Inventory(700, 100, 328, 140);
+        // console.log("game view inventory", this.inventory)
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
         console.log("game view gameinventory", this.inventory.gameItems)
-        // this.player.drawInventoryItems();
-        // this.drawAllItems();
+        this.player.drawInventoryItems();
+        this.drawAllItems();
        
           // this.ctx.mozImageSmoothingEnabled = false;
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
-        this.newGame();
+        this.newGame = this.newGame.bind(this);
         // this.startAnimating(3);
     }
+
     startPage() {
         // const playBtn = document.getElementsByClassName('play-btn')[0];
         // const gameOver = document.getElementsByClassName('game-over')[0];
@@ -51,20 +54,27 @@ export default class GameView {
         // cont.classList.add('hidden');
     }
 
-    // newGame() {
-    //     let game = new Game();
-    //     const openingBox = document.getElementsByClassName('opening-box')[0];
-    //     const playBtn = document.getElementsByClassName('playBtn')[0];
-    //     const gameOver = document.getElementsByClassName('game-over')[0];
-    //     // const cont = document.getElementsByClassName('cont')[0];
-    //     const gameStory = document.getElementsByClassName('game-story')[0];
-    //     const instructions = document.getElementsByClassName('instructions')[0];
-    //     openingBox.classList.add('hidden');
-    //     playBtn.classList.add('hidden');
-    //     instructions.classList.add('hidden');
-    //     // gameOver.classList.add('hidden');
-    //     gameStory.classList.add('hidden');
-    // }
+    newGame() {
+        console.log("I'm hit!")
+        // this.inventory = new Inventory(700, 100, 328, 140);
+        // console.log("game view inventory", this.inventory)
+        // this.player = new Player(this.canvas, this.inventory);
+        // this.inventory.drawInventory();
+        // console.log("game view gameinventory", this.inventory.gameItems)
+        let game = new Game();
+
+        const openingBox = document.getElementsByClassName('opening-box')[0];
+        const playBtn = document.getElementsByClassName('playBtn')[0];
+        const gameOver = document.getElementsByClassName('game-over')[0];
+        // const cont = document.getElementsByClassName('cont')[0];
+        const gameStory = document.getElementsByClassName('game-story')[0];
+        const instructions = document.getElementsByClassName('instructions')[0];
+        openingBox.classList.add('hidden');
+        playBtn.classList.add('hidden');
+        instructions.classList.add('hidden');
+        // gameOver.classList.add('hidden');
+        gameStory.classList.add('hidden');
+    }
 
     gameOver() {
 
@@ -83,7 +93,6 @@ export default class GameView {
     // setInterval(this.moveBackground.bind(this), 600, this.grassFrame);
 
     drawAllItems() {
-       
         this.inventory.gameItems.forEach(item => {
             let newItem = new Image();
             newItem.src = item.src;
@@ -148,10 +157,11 @@ export default class GameView {
         this.drawAllItems();
         // this.player.drawInventoryItems();
     };
-    newGame() {
-        let gameCanvas = document.getElementById('game-canvas');
-        this.game = new Game();
-    }
+
+    // newGame() {
+    //     let gameCanvas = document.getElementById('game-canvas');
+    //     this.game = new Game();
+    // }
 
     // restart() {
     //     let gameOver = document.getElementsByClassName('game-over')[0];

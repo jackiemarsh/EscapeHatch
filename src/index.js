@@ -14,10 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameView = new GameView();
     gameView.startPage();
     
-
-    // playBtn.addEventListener('click', () => {
-    //     gameView.play();
-    // })
     startBtn.addEventListener('mouseenter', () => {
         // playBtn.classList.remove('hidden');
         gameStory.classList.remove('hidden');
@@ -30,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         instructions.classList.add('hidden');
     })
     
-    // playBtn.addEventListener('click', gameView.newGame);
+    playBtn.addEventListener('click', gameView.newGame);
 
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
