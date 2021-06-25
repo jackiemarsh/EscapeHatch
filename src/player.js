@@ -117,7 +117,6 @@ export default class Player {
     }
 
     drawInventoryItems() {
-        console.log("drawinventoryitems is being called", this.inventory)
         if (this.inventory.length) { 
             this.inventory.forEach(item => {
                 let index = this.inventory.indexOf(item);
@@ -164,13 +163,11 @@ export default class Player {
             let objX = (arr[i].dx+arr[i].dw)/2;
             let objY = (arr[i].dy+arr[i].dh)/2;
 
-            console.log(Math.abs(pcX - objX), Math.abs(pcY + objY))
             if (Math.abs(pcX - objX) <15 && Math.abs(pcY - objY) < 20) {
                 return arr[i];
             } 
             
         }
-        console.log("false")
         return false;
     };
 

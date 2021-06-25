@@ -23,11 +23,9 @@ export default class GameView {
         this.animate = this.animate.bind(this);
         this.inventory = [];
         setInterval(this.moveBackground, 600, this.grassFrame);
-        console.log("game view inventory", this.inventory);
         this.inventory = new Inventory(700, 100, 328, 140);
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
-        console.log("game view gameinventory", this.inventory.gameItems)
         this.player.drawInventoryItems();
         this.drawAllItems();
        
@@ -61,14 +59,7 @@ export default class GameView {
         endBox.classList.add('hidden');
     }
 
-    newGame() {
-        console.log("I'm hit!")
-        // this.inventory = new Inventory(700, 100, 328, 140);
-        // console.log("game view inventory", this.inventory)
-        // this.player = new Player(this.canvas, this.inventory);
-        // this.inventory.drawInventory();
-        // console.log("game view gameinventory", this.inventory.gameItems)
-        
+    newGame() { 
         let game = new Game();
         
         const clockDisplay = document.getElementsByClassName('clock')[0];
@@ -160,7 +151,6 @@ export default class GameView {
         elapsed = now - this.then;
 
         if (elapsed > this.fpsInterval) {
-            // console.log("rendering")
             this.then = now - (elapsed % this.fpsInterval);
 
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

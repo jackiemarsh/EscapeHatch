@@ -94,13 +94,13 @@ body {
   width: 180px;
 /* } */ */
 
-/* .x1 {
+.x1 {
   animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate; 
   left: 10%;
   top: 5%; 
   transform: scale(0.6);
-  /* z-index: 100; */
-/* } */
+  z-index: 100;
+}
 
 .x2 {
   animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
