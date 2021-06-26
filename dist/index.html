@@ -25,21 +25,26 @@
 </head>
 <body>
     <div class="opening-box"> 
-        <img class="map" src="./assets/images/map.png" alt="map">
-        <button class='start-btn'>Start</button>
-        <button class="play-btn">Play</button>
-        <div class="menu">
-            <article class='game-story'>
-                <p>Yaaarrrrggh! The seas be rough, and your luck has turned, along with your ship</p>
-                <p>Trapped in the shipwreck, you must escape</p>
-                <p>You must gather the correct objects, before time runs out...</p>
-            </article>
-            <article class='instructions'>
-                <p>Arrow Keys - Make the pirate swim</p>
-                <p>"l" adds an object to your inventory</p>
-                <p>"a" drops it</p>
-                <p>Watch the clock!</p>
-            </article>
+        <div class="start-wrapper"> 
+            <div class="start-show"> 
+                <!-- <img class="map" src="./assets/images/map.png" alt="map"> -->
+                <button class='start-btn'>Start</button>
+            </div>
+            <div class="menu">
+                <article class='game-story'>
+                    <button class="close-menu">X</button>
+                    <p>Yaaarrrrggh! The seas be rough, and your luck has turned, along with your ship</p>
+                    <p>Trapped in the shipwreck, you must escape</p>
+                    <p>You must gather the correct objects, before time runs out...</p>
+                </article>
+                <article class='instructions'>
+                    <p>Arrow Keys - Make the pirate swim</p>
+                    <p>"l" adds an object to your inventory</p>
+                    <p>"a" drops it</p>
+                    <p>Watch the clock!</p>
+                    <button class="play-btn">Play</button>
+                </article>
+            </div>
         </div>
         
     </div>
@@ -55,16 +60,18 @@
         <canvas id="game-canvas"> </canvas>
         <canvas id="inventory-canvas" class="inventory-canvas"> </canvas>
         <div id="bubble-wrap">
-            <div class="bubble x1"></div>
-            <div class="bubble x2"></div>
-            <div class="bubble x3"></div>
-            <div class="bubble x4"></div>
-            <div class="bubble x5"></div>
-            <div class="bubble x6"></div>
-            <div class="bubble x7"></div>
-            <div class="bubble x8"></div>
-            <div class="bubble x9"></div>
-            <div class="bubble x10"></div>
+            <div class="inner-bubble">
+                <div class="bubble x1"></div>
+                <div class="bubble x2"></div>
+                <div class="bubble x3"></div>
+                <div class="bubble x4"></div>
+                <div class="bubble x5"></div>
+                <div class="bubble x6"></div>
+                <div class="bubble x7"></div>
+                <div class="bubble x8"></div>
+                <div class="bubble x9"></div>
+                <div class="bubble x10"></div>
+            </div>
         </div>
     </div>
    

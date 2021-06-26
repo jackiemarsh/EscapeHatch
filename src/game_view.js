@@ -48,12 +48,14 @@ export default class GameView {
         const endBox = document.getElementsByClassName('end-game')[0];
         const gameOver = document.getElementsByClassName('lose-box')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
+        const menu = document.getElementsByClassName('menu')[0];
         // playBtn.classList.add('hidden');
-        instructions.classList.add('hidden');
+        // instructions.classList.add('hidden');
         clockDisplay.classList.add('hidden');
         inventoryCanvas.classList.add('hidden');
+        menu.classList.add('hidden');
         // gameOver.classList.add('hidden');
-        gameStory.classList.add('hidden');
+        // gameStory.classList.add('hidden');
         youWin.classList.add('hidden');
         gameOver.classList.add('hidden');
         endBox.classList.add('hidden');

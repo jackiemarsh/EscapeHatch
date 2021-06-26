@@ -10,19 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const playBtn = document.getElementsByClassName('play-btn')[0];
     const gameStory = document.getElementsByClassName('game-story')[0];
     const instructions = document.getElementsByClassName('instructions')[0];
+    const closeMenu = document.getElementsByClassName('close-menu')[0];
+    const menu = document.getElementsByClassName('menu')[0];
     const gameView = new GameView();
     gameView.startPage();
     
-    startBtn.addEventListener('mouseenter', () => {
-        // playBtn.classList.remove('hidden');
-        gameStory.classList.remove('hidden');
-        instructions.classList.remove('hidden');
+    startBtn.addEventListener('click', () => {
+        menu.classList.remove('hidden');
     })
     
-    startBtn.addEventListener('mouseleave', () => {
-        // playBtn.classList.add('hidden');
-        gameStory.classList.add('hidden');
-        instructions.classList.add('hidden');
+    closeMenu.addEventListener('click', () => {
+        menu.classList.add('hidden');
     })
     
     playBtn.addEventListener('click', gameView.newGame);
