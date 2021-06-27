@@ -1,12 +1,12 @@
 html {
   /* min-height: 600px; */
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
 body {
   /* min-height: 600px; */
-  height: 100%;
+  max-height: 705px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .screen-wrapper {
@@ -73,6 +74,14 @@ body {
   right: 2px;
   margin: 14px; 
   z-index: 1000;
+}
+
+#win-canvas {
+  width: 100px;
+  height: 100px;
+  top: 170px;
+  left: 450px;
+  background: rgb(45, 48, 236);
 }
 
 #bubble-wrap {
@@ -185,7 +194,7 @@ body {
 
 @keyframes animateBubble {
   0% {
-      margin-top: 910px;
+      margin-top: 100%;
   }
   100% {
       margin-top: -10px;
@@ -202,7 +211,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .opening-box, .end-game {
@@ -221,6 +230,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  /* ^^ of browser window */
 }
 
 .start-show {
@@ -241,6 +251,7 @@ body {
 .start-btn {
   color: rgb(47, 177, 177);
 } 
+
 .play-btn {
   /* position: absolute; */
   color: rgb(47, 177, 177);
@@ -255,17 +266,39 @@ body {
   right: 50%;
   transform: translate(-50%, -50%);
   left: 50vw;
+  background-image: url("../images/map.png");
 } 
 
 .menu {
   position: absolute;
-  background: wheat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
   color: blue;
-  width: 500px;
+  font-family: cursive;
+  height: 580px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -80%);
-  padding: 24px;
+  transform: translate(-50%, -60%);
+  /* padding: 24px; */
+  background-size: 100%;
+  background-image: url("../images/scroll.png");
+}
+
+.game-story, .instructions {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-menu {
+ align-self: flex-start;
+}
+
+.game-story {
+  padding: 52px 52px 0px 52px;
 }
 
 button {

@@ -33,9 +33,12 @@ export default class GameView {
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
         // this.ctx.imageSmoothingEnabled = false;
+        this.game;
         this.newGame = this.newGame.bind(this);
         this.winGame = this.winGame.bind(this);
-        // this.startAnimating(3);
+
+        this.canvasWin = document.getElementById("win-canvas");
+        this.ctxWin = this.canvasWin.getContext("2d");
     }
 
     startPage() {
@@ -62,7 +65,7 @@ export default class GameView {
     }
 
     newGame() { 
-        let game = new Game();
+        this.game = new Game();
         
         const clockDisplay = document.getElementsByClassName('clock')[0];
         const inventoryCanvas = document.getElementsByClassName('inventory-canvas')[0];
@@ -85,6 +88,8 @@ export default class GameView {
         instructions.classList.add('hidden');
         clockDisplay.classList.remove('hidden');
         inventoryCanvas.classList.remove('hidden');
+        this.winGame();
+        this.winGameSequence();
     }
 
     winGame() {
@@ -179,10 +184,10 @@ export default class GameView {
         // this.player.drawInventoryItems();
     };
 
-    // newGame() {
-    //     let gameCanvas = document.getElementById('game-canvas');
-    //     this.game = new Game();
-    // }
+    winGameSequence() {
+        this.ctxWin.fillRect(250, 170, 50, 50);
+        this.ctxWin.fillStyle = "rgb(45, 48, 236)";
+    };
 
     // restart() {
     //     let gameOver = document.getElementsByClassName('game-over')[0];

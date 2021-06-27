@@ -1,4 +1,4 @@
-// console.log("Webpack is working")
+console.log("Webpack is working")
 
 import Game from "./game.js";
 import GameView from "./game_view";
@@ -6,7 +6,6 @@ import Player from "./player.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const startBtn = document.getElementsByClassName('start-btn')[0];
-    // const startGame = document.getElementsByClassName('start-game')[0];
     const playBtn = document.getElementsByClassName('play-btn')[0];
     const gameStory = document.getElementsByClassName('game-story')[0];
     const instructions = document.getElementsByClassName('instructions')[0];

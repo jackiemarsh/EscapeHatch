@@ -13,7 +13,6 @@ export default class Player {
             this.maxFrame = 5,
             this.frameSpeed = 1,
             this.speed = 6,
-            // this.ticksPerFrame = ;
             this.tickCount = 0; 
             this.moving = false,
             this.direction = "idle",
@@ -60,7 +59,7 @@ export default class Player {
         }
         switch (e.key) {
             case "ArrowUp":
-                if (this.y > 175) {
+                if (this.y > 165) {
                     this.y -= this.speed;
                     this.frameY = 1;
                     this.moving = true;
@@ -73,7 +72,7 @@ export default class Player {
                     this.x -= this.speed;
                     this.moving = true;
                     this.direction = "left";
-                    this.frameX = 0;
+                    // this.frameX = 0;
                     this.frameY = 4;
                     this.frameSpeed = 3;
                 }
@@ -83,9 +82,9 @@ export default class Player {
                     this.y += this.speed;
                     this.moving = true;
                     this.direction = "down";
-                    this.frameX = 0;
+                    // this.frameX = 0;
                     this.frameY = 3;
-                    this.maxFrame = 12;
+                    this.maxFrame = 11;
                     this.frameSpeed = 3;
                 }
                 break;
@@ -98,14 +97,14 @@ export default class Player {
                     this.frameSpeed = 3;
                 }
                 break;
-            case "l":
+            case "a":
             let item = this.collideRect();
                 if (item) {
                     this.addItem(item);
                     this.drawInventoryItems();
                 }
                 break;
-            case "a":
+            case "q":
                 if (this.inventory.includes(item)) {
                     this.dropItem(item);
                     this.drawInventoryItems();

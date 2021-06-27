@@ -50,8 +50,8 @@ export default class Inventory {
         let yLow = 170;
         let xHigh = 850;
         let yHigh = 550;
-        let dXMin = Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow;
-        let dYMin = Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow;
+        // let dXMin = Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow;
+        // let dYMin = Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow;
         let generatedItems = [
             //  new Item("barrel", 50, 200, 950, 600, Math.random() * 250, Math.random() * 120, 80, 51, "../dist/assets/inventory/barrel.png"),
              new Item("bread", 0, 0, 466, 319, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/bread.png"),
@@ -78,32 +78,8 @@ export default class Inventory {
         }
         return gameItems;
     };
-    // drawInventoryItems() {
-    //     this.inventoryItems = this.generateAllItems();
-
-    //     if (this.inventoryItems.length) { 
-    //         this.inventoryItems.forEach(item => {
-    //             // console.log(item)
-    //             let index = this.inventoryItems.indexOf(item);
-    //             let i = ((this.w - 35) / this.columns * (index % this.columns))+3
-    //             let jdex = 0
-    //                 if (index > 5) {
-    //                     jdex = 1
-    //                 }
-    //             let newItem = new Image();
-    //             newItem.src = item.src;
-    //             newItem.onload = () => { 
-    //             this.ctx.drawImage(newItem, item.x, item.y, item.w, item.h, i, (this.h / this.rows * jdex)+18 , item.dw, item.dh) 
-    //             }
-    //         });
-    //     }
-    // }
-    // var pointer = { x:100, y:0, down:false };
-
-    // function loop(time_step) {
-
-    // window.requestAnimationFrame(loop);// perpetuate the loop
     
+
     clickInventory() {
         //    if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
         //        let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
@@ -121,13 +97,8 @@ export default class Inventory {
     } 
 
     drawInventory() {
-        // this.ctx.fillStyle = "lightgray";
-        // this.ctx.fillRect(this.x, this.y, this.w-28, this.h-28);
-
         const coin = new Image();
         coin.src = "../dist/assets/inventory/coin_gold.png"
-        // for (let i = 0; i<this.canvas.width; i+=50) {
-        //     for (let j = 0; j<this.canvas.clientHeight; j+=30) {
                 coin.onload = () => { 
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 0, 25, 25)
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 65, 0, 25, 25)
