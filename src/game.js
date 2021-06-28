@@ -11,30 +11,34 @@ export default class Game {
         this.canvas = gameView.canvas;
         this.ctx = gameView.ctx;
         gameView.startAnimating(15);
-        this.timer();
+        // this.timer(1, (x) => {
+        //     // console.log( "timer", x)
+        //     return(x)
+        // });
     }
     
-    timer(startMinutes) {
-        startMinutes = 1;
-        // this.level.time when harder levels built
-        let time = startMinutes*60
-        const countdownEl = document.getElementById("clock-display");
+    // timer(startMinutes, callback) {
+    //     // startMinutes = 1;
+    //     // this.level.time when harder levels built
+    //     let time = startMinutes*60
+    //     const countdownEl = document.getElementById("clock-display");
         
-        let startTime = new Date().getTime();
+    //     let startTime = new Date().getTime();
 
-        let runClock = setInterval(() => {
-            if(Math.floor(new Date().getTime()) - startTime > 62000){
-                clearInterval(runClock);
-                return false;
-            } 
-            let m = Math.floor(time/60);
-            let s = Math.floor(time%60);
+    //     let runClock = setInterval(() => {
+    //         if(Math.floor(new Date().getTime()) - startTime > 61000){
+    //             console.log(startTime, Math.floor(new Date().getTime()))
+    //             clearInterval(runClock);
+    //             callback("done");
+    //         } 
+    //         let m = Math.floor(time/60);
+    //         let s = Math.floor(time%60);
             
-            s = s < 10 ? "0" + s : s;
-            countdownEl.innerHTML = `${m}:${s}`;
-            time--;
-        }, 1000)
-    }
+    //         s = s < 10 ? "0" + s : s;
+    //         countdownEl.innerHTML = `${m}:${s}`;
+    //         time--;
+    //     }, 1000)
+    // }
 
 }
   

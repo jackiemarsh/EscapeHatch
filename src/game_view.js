@@ -37,8 +37,9 @@ export default class GameView {
         this.newGame = this.newGame.bind(this);
         this.winGame = this.winGame.bind(this);
 
-        this.canvasWin = document.getElementById("win-canvas");
-        this.ctxWin = this.canvasWin.getContext("2d");
+        // this.canvasWin = document.getElementById("win-canvas");
+        // this.ctxWin = this.canvasWin.getContext("2d");
+        // this.winGameSequence();
     }
 
     startPage() {
@@ -89,7 +90,40 @@ export default class GameView {
         clockDisplay.classList.remove('hidden');
         inventoryCanvas.classList.remove('hidden');
         this.winGame();
-        this.winGameSequence();
+        // this.winGameSequence();
+        this.timer = this.timer.bind(this);
+        this.timer(1, (x) => {
+            // console.log( "timer", x)
+            return(x)
+        });
+        // this.gameOver();
+    }
+
+    timer(startMinutes, callback) {
+        // startMinutes = 1;
+        // this.level.time when harder levels built
+        let time = startMinutes*60
+        const countdownEl = document.getElementById("clock-display");
+        
+        let startTime = new Date().getTime();
+
+        let runClock = setInterval(() => {
+            if(Math.floor(new Date().getTime()) - startTime > 61000){
+                console.log(startTime, Math.floor(new Date().getTime()))
+                clearInterval(runClock);
+                callback("done");
+                const endBox = document.getElementsByClassName('end-game')[0];
+                const gameOver = document.getElementsByClassName('lose-box')[0];
+                endBox.classList.remove('hidden');
+                gameOver.classList.remove('hidden');
+            } 
+            let m = Math.floor(time/60);
+            let s = Math.floor(time%60);
+            
+            s = s < 10 ? "0" + s : s;
+            countdownEl.innerHTML = `${m}:${s}`;
+            time--;
+        }, 1000)
     }
 
     winGame() {
@@ -102,9 +136,15 @@ export default class GameView {
         }
     }
 
-    gameOver() {
-
-    }
+    // gameOver() {
+    //     if (this.timer() === "done") {
+    //         const endBox = document.getElementsByClassName('end-game')[0];
+    //         const gameOver = document.getElementsByClassName('lose-box')[0];
+    //         endBox.classList.remove('hidden');
+    //         gameOver.classList.remove('hidden');
+    //         console.log("game over")
+    //     }
+    // }
 
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
@@ -184,10 +224,19 @@ export default class GameView {
         // this.player.drawInventoryItems();
     };
 
-    winGameSequence() {
-        this.ctxWin.fillRect(250, 170, 50, 50);
-        this.ctxWin.fillStyle = "rgb(45, 48, 236)";
-    };
+    // winGameSequence() {
+    //     // this.ctxWin.fillRect(250, 170, 50, 50);
+    //     // this.ctxWin.fillStyle = "rgb(45, 48, 236)";
+    //     const hatch = new Image();
+    //     hatch.src = "../dist/assets/images/ship.png";
+    //     hatch.onload = () => { 
+    //         // this.ctxWin.fillRect(250, 170, 50, 50);
+    //         // this.ctxWin.fillStyle = "blue";
+    //         this.ctxWin.drawImage(hatch, 100, 45, 10, 20, 200, 172, 60, 54)
+        
+    //     debugger
+    //     }; 
+    // };
 
     // restart() {
     //     let gameOver = document.getElementsByClassName('game-over')[0];
