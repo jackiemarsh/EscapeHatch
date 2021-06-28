@@ -1,7 +1,7 @@
 # EscapeHatch
 
 
-![game view](https://github.com/jackiemarsh/EscapeHatch/dist/assets/images/ReadMe.png)
+![game view](https://github.com/jackiemarsh/EscapeHatch/tree/main/dist/assets/images/ReadMe.png)
 Yargh matey, embrace the nostalgia with this old-school 2D adventure game. Beat the clock, and grab some booty to save your life on the high seas. 
 
 [Play!](https://jackiemarsh.github.io/EscapeHatch/)
@@ -13,7 +13,8 @@ Yargh matey, embrace the nostalgia with this old-school 2D adventure game. Beat 
 * Player animation
 * Responsive inventory
 * Timer
-![Game view](https://github.com/jackiemarsh/EscapeHatch/dist/assets/images/GameOver.png)
+* 
+![Game view](https://github.com/jackiemarsh/EscapeHatch/tree/main/dist/assets/images/GameOver.png)
 
 
 # Technologies
