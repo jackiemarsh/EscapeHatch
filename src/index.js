@@ -52,15 +52,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
     
     // const playerSprite = new Image();
-    // playerSprite.src = "../dist/assets/images/Pirate.png"
+    // playerSprite.src = "./dist/assets/images/Pirate.png"
     // const background1 = new Image();
-    // background1.src = "../dist/assets/images/underwater.png"
+    // background1.src = "./dist/assets/images/underwater.png"
     // const background2 = new Image();
-    // background2.src = "../dist/assets/images/ship.png"
+    // background2.src = "./dist/assets/images/ship.png"
     // const background3 = new Image();
-    // background3.src = "../dist/assets/images/ship copy.png"
+    // background3.src = "./dist/assets/images/ship copy.png"
     // const grass = new Image();
-    // grass.src = "../dist/assets/images/grass.png"
+    // grass.src = "./dist/assets/images/grass.png"
     
     // function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
     //     ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
