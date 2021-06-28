@@ -53,17 +53,17 @@ export default class Inventory {
         // let dXMin = Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow;
         // let dYMin = Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow;
         let generatedItems = [
-            //  new Item("barrel", 50, 200, 950, 600, Math.random() * 250, Math.random() * 120, 80, 51, "../dist/assets/inventory/barrel.png"),
-             new Item("bread", 0, 0, 466, 319, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/bread.png"),
-             new Item("coin", 0, 0, 345, 417, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/coin.png"),
-             new Item("crystal", 0, 0, 361, 538, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/crystal.png"),
-             new Item("shell", 100, 0, 50, 50, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/shell.png"),
-             new Item("key", 32, 0, 32, 32, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/KeyIcons.png"),
-             new Item("letters", 0, 0, 581, 458, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "../dist/assets/inventory/paper.png"),
-             new Item("bottle", 0, 0, 400, 500, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "../dist/assets/inventory/bottle.png"),
-             new Item("quiche", 0, 0, 290, 290, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/quiche.png"),
-             new Item("skull", 0, 0, 346, 398, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 40, "../dist/assets/inventory/skull.png"),
-             new Item("wood", 0, 0, 514, 423, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "../dist/assets/inventory/wood.png"),
+            //  new Item("barrel", 50, 200, 950, 600, Math.random() * 250, Math.random() * 120, 80, 51, "./dist/assets/inventory/barrel.png"),
+             new Item("bread", 0, 0, 466, 319, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/bread.png"),
+             new Item("coin", 0, 0, 345, 417, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/coin.png"),
+             new Item("crystal", 0, 0, 361, 538, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/crystal.png"),
+             new Item("shell", 100, 0, 50, 50, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/shell.png"),
+             new Item("key", 32, 0, 32, 32, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/KeyIcons.png"),
+             new Item("letters", 0, 0, 581, 458, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "./dist/assets/inventory/paper.png"),
+             new Item("bottle", 0, 0, 400, 500, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 45, 45, "./dist/assets/inventory/bottle.png"),
+             new Item("quiche", 0, 0, 290, 290, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/quiche.png"),
+             new Item("skull", 0, 0, 346, 398, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 40, "./dist/assets/inventory/skull.png"),
+             new Item("wood", 0, 0, 514, 423, Math.floor(Math.random() * (1 + xHigh - xLow)) + xLow, Math.floor(Math.random() * (1 + yHigh - yLow)) + yLow, 35, 35, "./dist/assets/inventory/wood.png"),
             ];
         return generatedItems;
     }
@@ -98,7 +98,7 @@ export default class Inventory {
 
     drawInventory() {
         const coin = new Image();
-        coin.src = "../dist/assets/inventory/coin_gold.png"
+        coin.src = "./dist/assets/inventory/coin_gold.png"
                 coin.onload = () => { 
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 0, 25, 25)
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 65, 0, 25, 25)

@@ -181,17 +181,17 @@ export default class GameView {
         let now, elapsed;
         
         const playerSprite = new Image();
-        playerSprite.src = "../dist/assets/images/guybrush 4.PNG"
+        playerSprite.src = "./dist/assets/images/guybrush 4.PNG"
         const background1 = new Image();
-        background1.src = "../dist/assets/images/underwater.png"
+        background1.src = "./dist/assets/images/underwater.png"
         const background2 = new Image();
-        background2.src = "../dist/assets/images/ship.png"
+        background2.src = "./dist/assets/images/ship.png"
         const background3 = new Image();
-        background3.src = "../dist/assets/images/ship copy.png"
+        background3.src = "./dist/assets/images/ship copy.png"
         const grass = new Image();
-        grass.src = "../dist/assets/images/grass.png";
+        grass.src = "./dist/assets/images/grass.png";
         const environment = new Image();
-        environment.src = "../dist/assets/images/ecco_1.PNG"
+        environment.src = "./dist/assets/images/ecco_1.PNG"
         // const
 
         now = Date.now();
@@ -228,7 +228,7 @@ export default class GameView {
     //     // this.ctxWin.fillRect(250, 170, 50, 50);
     //     // this.ctxWin.fillStyle = "rgb(45, 48, 236)";
     //     const hatch = new Image();
-    //     hatch.src = "../dist/assets/images/ship.png";
+    //     hatch.src = "./dist/assets/images/ship.png";
     //     hatch.onload = () => { 
     //         // this.ctxWin.fillRect(250, 170, 50, 50);
     //         // this.ctxWin.fillStyle = "blue";
