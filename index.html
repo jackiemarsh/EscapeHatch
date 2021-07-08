@@ -54,9 +54,11 @@
 
     <div class="end-game">
         <img class="map" src="./dist/assets/images/map.png" alt="map">
-        <div class="win-box">You win!</div>
+        <div class="win-box">You win!
+            <button class="restart-btn win" onClick="window.location.reload();">Try Again?</button>
+        </div>
         <div class="lose-box">Game Over
-            <button class="restart-btn">Try Again?</button>
+            <button class="restart-btn lose" onClick="window.location.reload();">Try Again?</button>
         </div>
     </div>
 

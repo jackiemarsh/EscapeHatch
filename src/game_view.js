@@ -103,14 +103,13 @@ export default class GameView {
         // this.level.time when harder levels built
         let time = startMinutes*60
         const countdownEl = document.getElementById("clock-display");
-        const restartBtn = document.getElementsByClassName('restart-btn')[0];
-        // restartBtn.addEventListener('click', document.location.reload());
+        const restartBtn = document.getElementsByClassName('restart-btn lose')[0];
 
         let startTime = new Date().getTime();
 
         let runClock = setInterval(() => {
             if(Math.floor(new Date().getTime()) - startTime > 61000){
-                console.log(startTime, Math.floor(new Date().getTime()))
+                // console.log(startTime, Math.floor(new Date().getTime()))
                 clearInterval(runClock);
                 callback("done");
                 const endBox = document.getElementsByClassName('end-game')[0];
@@ -131,10 +130,12 @@ export default class GameView {
     winGame() {
         const endBox = document.getElementsByClassName('end-game')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
+        const restartBtn = document.getElementsByClassName('restart-btn win')[0];
 
         if (this.player.inventory.length === 4) {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
+            restartBtn.classList.remove('hidden');
         }
     }
 

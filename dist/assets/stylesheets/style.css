@@ -375,6 +375,17 @@ button:hover {
   flex-direction: column;
 }
 
+/* .flag-fill {
+  background: lightgray;
+  width: 180px;
+  height: 78px;
+} */
+
+.restart-btn {
+ justify-self: flex-end;
+ font-size: 18px;
+}
+
 .win-box {
   background-image: url("../images/win-chest.png");
   top: 50%;
@@ -383,6 +394,8 @@ button:hover {
   background-size: 100%;
   width: 220px;
   height: 150px;
+  display: flex;
+  flex-direction: column;
 }
 
 #win-canvas {
