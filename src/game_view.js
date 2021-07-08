@@ -36,10 +36,6 @@ export default class GameView {
         this.game;
         this.newGame = this.newGame.bind(this);
         this.winGame = this.winGame.bind(this);
-
-        // this.canvasWin = document.getElementById("win-canvas");
-        // this.ctxWin = this.canvasWin.getContext("2d");
-        // this.winGameSequence();
     }
 
     startPage() {
@@ -51,6 +47,7 @@ export default class GameView {
         const instructions = document.getElementsByClassName('instructions')[0];
         const endBox = document.getElementsByClassName('end-game')[0];
         const gameOver = document.getElementsByClassName('lose-box')[0];
+        const restartBtn = document.getElementsByClassName('restart-btn')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
         const menu = document.getElementsByClassName('menu')[0];
         // playBtn.classList.add('hidden');
@@ -63,6 +60,8 @@ export default class GameView {
         youWin.classList.add('hidden');
         gameOver.classList.add('hidden');
         endBox.classList.add('hidden');
+        restartBtn.classList.add('hidden');
+        // restartBtn.addEventListener('click', document.location.reload());
     }
 
     newGame() { 
@@ -104,7 +103,9 @@ export default class GameView {
         // this.level.time when harder levels built
         let time = startMinutes*60
         const countdownEl = document.getElementById("clock-display");
-        
+        const restartBtn = document.getElementsByClassName('restart-btn')[0];
+        // restartBtn.addEventListener('click', document.location.reload());
+
         let startTime = new Date().getTime();
 
         let runClock = setInterval(() => {
@@ -116,6 +117,7 @@ export default class GameView {
                 const gameOver = document.getElementsByClassName('lose-box')[0];
                 endBox.classList.remove('hidden');
                 gameOver.classList.remove('hidden');
+                restartBtn.classList.remove('hidden');
             } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
@@ -154,9 +156,6 @@ export default class GameView {
         if (sprite.frameX === 0) sprite.frameX++;
         else sprite.frameX = 0;
     } 
-
-    // setInterval(moveBackground, 600, this.grassFrame);
-    // setInterval(this.moveBackground.bind(this), 600, this.grassFrame);
 
     drawAllItems() {
         this.inventory.gameItems.forEach(item => {
@@ -221,7 +220,6 @@ export default class GameView {
         }
         requestAnimationFrame(this.animate.bind(this));
         this.drawAllItems();
-        // this.player.drawInventoryItems();
     };
 
     // winGameSequence() {

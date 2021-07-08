@@ -7,7 +7,7 @@ import Player from "./player.js";
 document.addEventListener("DOMContentLoaded", function () {
     const startBtn = document.getElementsByClassName('start-btn')[0];
     const playBtn = document.getElementsByClassName('play-btn')[0];
-    const restartBtn = document.getElementsByClassName('restart-btn')[0];
+    // const restartBtn = document.getElementsByClassName('restart-btn')[0];
     const gameStory = document.getElementsByClassName('game-story')[0];
     const instructions = document.getElementsByClassName('instructions')[0];
     const closeMenu = document.getElementsByClassName('close-menu')[0];
@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
     playBtn.addEventListener('click', gameView.newGame);
-    // restartBtn.addEventListener('click', gameView.newGame);
+
+    // restartBtn.addEventListener('click', document.location.reload());
 
     // const canvas = document.getElementById("practice-canvas");
     // const ctx = canvas.getContext("2d");
