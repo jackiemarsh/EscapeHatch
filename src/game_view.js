@@ -120,10 +120,11 @@ export default class GameView {
             } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
-            
+
             s = s < 10 ? "0" + s : s;
             countdownEl.innerHTML = `${m}:${s}`;
             time--;
+            console.log(this.winGame());
         }, 1000)
     }
 
@@ -136,6 +137,8 @@ export default class GameView {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
+            
+            return "win";
         }
     }
 
