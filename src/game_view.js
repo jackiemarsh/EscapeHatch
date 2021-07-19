@@ -28,7 +28,6 @@ export default class GameView {
         this.inventory.drawInventory();
         this.player.drawInventoryItems();
         this.drawAllItems();
-       
         // this.ctx.mozImageSmoothingEnabled = false;
         // this.ctx.webkitImageSmoothingEnabled = false;
         // this.ctx.msImageSmoothingEnabled = false;
@@ -36,11 +35,11 @@ export default class GameView {
         this.game;
         this.newGame = this.newGame.bind(this);
         this.winGame = this.winGame.bind(this);
+        this.inventoryLength = this.player.inventory.length
+        console.log(this.inventoryLength)
     }
 
     startPage() {
-        // const playBtn = document.getElementsByClassName('play-btn')[0];
-        // const gameOver = document.getElementsByClassName('game-over')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const clockDisplay = document.getElementsByClassName('clock')[0];
         const inventoryCanvas = document.getElementsByClassName('inventory-canvas')[0];
@@ -50,21 +49,17 @@ export default class GameView {
         const restartBtn = document.getElementsByClassName('restart-btn')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
         const menu = document.getElementsByClassName('menu')[0];
-        // playBtn.classList.add('hidden');
-        // instructions.classList.add('hidden');
         clockDisplay.classList.add('hidden');
         inventoryCanvas.classList.add('hidden');
         menu.classList.add('hidden');
-        // gameOver.classList.add('hidden');
-        // gameStory.classList.add('hidden');
         youWin.classList.add('hidden');
         gameOver.classList.add('hidden');
         endBox.classList.add('hidden');
         restartBtn.classList.add('hidden');
-        // restartBtn.addEventListener('click', document.location.reload());
     }
 
     newGame() { 
+        console.log("newGame")
         this.game = new Game();
         
         const clockDisplay = document.getElementsByClassName('clock')[0];
@@ -83,35 +78,37 @@ export default class GameView {
         endBox.classList.add('hidden');
         playBtn.classList.add('hidden');
         gameOver.classList.add('hidden');
+        gameOver.classList.add('stay-hidden');
         youWin.classList.add('hidden');
         gameStory.classList.add('hidden');
         instructions.classList.add('hidden');
         clockDisplay.classList.remove('hidden');
         inventoryCanvas.classList.remove('hidden');
-        this.winGame();
+        
         // this.winGameSequence();
-        this.timer = this.timer.bind(this);
-        this.timer(1, (x) => {
-            // console.log( "timer", x)
-            return(x)
-        });
-        // this.gameOver();
+        this.timer(1);
     }
 
-    timer(startMinutes, callback) {
+    timer(startMinutes) {
         // startMinutes = 1;
         // this.level.time when harder levels built
         let time = startMinutes*60
         const countdownEl = document.getElementById("clock-display");
         const restartBtn = document.getElementsByClassName('restart-btn lose')[0];
-
+        
         let startTime = new Date().getTime();
-
+        
         let runClock = setInterval(() => {
+            console.log("inventory value", this.inventoryLength);
+            if (this.inventoryLength === 4) {
+                console.log("runclock clear")
+                clearInterval(runClock)
+            }
             if(Math.floor(new Date().getTime()) - startTime > 61000){
+                console.log("wingame value 2", this.win);
                 // console.log(startTime, Math.floor(new Date().getTime()))
                 clearInterval(runClock);
-                callback("done");
+                // callback("done");
                 const endBox = document.getElementsByClassName('end-game')[0];
                 const gameOver = document.getElementsByClassName('lose-box')[0];
                 endBox.classList.remove('hidden');
@@ -124,22 +121,26 @@ export default class GameView {
             s = s < 10 ? "0" + s : s;
             countdownEl.innerHTML = `${m}:${s}`;
             time--;
-            console.log(this.winGame());
         }, 1000)
     }
 
     winGame() {
+        console.log("wingame inventorylength", this.inventoryLength)
         const endBox = document.getElementsByClassName('end-game')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
         const restartBtn = document.getElementsByClassName('restart-btn win')[0];
-
+        const countdownEl = document.getElementById("clock-display");
+        
         if (this.player.inventory.length === 4) {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
-            
-            return "win";
+        
+            countdownEl.innerHTML = `Yargh!`
+            console.log("hello", this.win)
+            this.win = true;
         }
+        // return false;
     }
 
     // gameOver() {
@@ -239,38 +240,5 @@ export default class GameView {
     //     debugger
     //     }; 
     // };
-
-    // restart() {
-    //     let gameOver = document.getElementsByClassName('game-over')[0];
-    //     let cont = document.getElementsByClassName('cont')[0];
-    //     let transitionEvent;
-
-    //     const gameOverFadeOut = (e) => {
-    //         e.preventDefault();
-
-    //         this.newGame();
-    //         this.gameView.player.KeyListeners();
-    //         // this.pause = false;
-
-    //         gameOver.classList.add('hidden');
-    //         cont.classList.add('hidden');
-            
-    //         document.removeEventListener('keydown', gameOverFadeOut);
-    //     }
-    // }
-  
-    // for (let index = this.items.length-1; index > -1; --index) {
-    //     let item = items[index];
-
-    //     if (item.y + item.h >= map_floor && item.collideRect(player) && pointer.down && item.collidePoint(pointer)) {
-    //       front_item_index = index;// store the frontmost item index
-    //     }
-
-    //     // item.updatePosition(map_gravity, map_friction, map_floor);
-    //     this.ctx.drawImage(tile_set, item.sx, item.sy, item.w, item.h, Math.round(item.x), Math.round(item.y), item.w, item.h);
-    //   }
-    //   // If there is an item selected, add it to the inventory
-    //   if (front_item_index != undefined && inventory.addItem(items[front_item_index])) items.splice(front_item_index, 1); 
-  
 
 };

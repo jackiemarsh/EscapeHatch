@@ -80,16 +80,16 @@ export default class Inventory {
     };
     
 
-    clickInventory() {
-        //    if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
-        //        let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
+    // clickInventory() {
+    //     //    if (pointer.down && inventory.items.length > 0 && inventory.collidePoint(pointer)) {
+    //     //        let index = Math.floor((pointer.x - inventory.x) / (inventory.w / inventory.columns));
                
-        //        pointer.x = player.x + player.w * 0.5;
-        //        let item = inventory.dropItem(index, player.x, player.y);
+    //     //        pointer.x = player.x + player.w * 0.5;
+    //     //        let item = inventory.dropItem(index, player.x, player.y);
                
-        //        if (item) items.unshift(item);
-        //     };
-    };
+    //     //        if (item) items.unshift(item);
+    //     //     };
+    // };
 
     moveCoin(sprite) {
         if (sprite.frameX < 8) sprite.frameX++;
@@ -100,6 +100,7 @@ export default class Inventory {
         const coin = new Image();
         coin.src = "./dist/assets/inventory/coin_gold.png"
                 coin.onload = () => { 
+                    // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 0, 0, 25, 25)
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 65, 0, 25, 25)
                     this.ctx.drawImage(coin, this.goldCoins.width*this.goldCoins.frameX, 0, 32, 32, 130, 0, 25, 25)
