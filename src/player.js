@@ -170,15 +170,4 @@ export default class Player {
         return false;
     };
 
-    // keyInventory(item) {
-    //     if (this.keys["l"] && this.collideRect(item)) {
-    //         console.log("l is in keys")
-    //         this.addItem(item);
-    //         this.drawInventoryItems();
-    //     }
-    //     if (this.keys["a"] && this.inventory.includes(item)) {
-    //         this.dropItem(item);
-    //         this.drawInventoryItems();
-    //     }
-    // }
 }

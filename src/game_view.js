@@ -36,7 +36,6 @@ export default class GameView {
         this.newGame = this.newGame.bind(this);
         this.winGame = this.winGame.bind(this);
         this.inventoryLength = this.player.inventory.length
-        console.log(this.inventoryLength)
     }
 
     startPage() {
@@ -99,16 +98,9 @@ export default class GameView {
         let startTime = new Date().getTime();
         
         let runClock = setInterval(() => {
-            console.log("inventory value", this.inventoryLength);
-            if (this.inventoryLength === 4) {
-                console.log("runclock clear")
-                clearInterval(runClock)
-            }
+  
             if(Math.floor(new Date().getTime()) - startTime > 61000){
-                console.log("wingame value 2", this.win);
-                // console.log(startTime, Math.floor(new Date().getTime()))
-                clearInterval(runClock);
-                // callback("done");
+                 clearInterval(runClock);
                 const endBox = document.getElementsByClassName('end-game')[0];
                 const gameOver = document.getElementsByClassName('lose-box')[0];
                 endBox.classList.remove('hidden');
@@ -125,7 +117,6 @@ export default class GameView {
     }
 
     winGame() {
-        console.log("wingame inventorylength", this.inventoryLength)
         const endBox = document.getElementsByClassName('end-game')[0];
         const youWin = document.getElementsByClassName('win-box')[0];
         const restartBtn = document.getElementsByClassName('restart-btn win')[0];
@@ -137,7 +128,6 @@ export default class GameView {
             restartBtn.classList.remove('hidden');
         
             countdownEl.innerHTML = `Yargh!`
-            console.log("hello", this.win)
             this.win = true;
         }
         // return false;
