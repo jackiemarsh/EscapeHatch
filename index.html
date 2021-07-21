@@ -49,10 +49,10 @@
                 <a href="https://github.com/jackiemarsh"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/jackie-marsh-a988874b/"><i class="fab fa-linkedin"></i></a>
             </span>  
-            <div class='music-controls '>
+            <div class='start-controls'>
                 <span>Sound</span>
-                <i id='music-play' class="hidden fa fa-play"></i>
-                <i id='music-pause' class="fa fa-pause"></i>
+                <i id='sound-play-start' class="fas fa-volume-up hidden"></i>
+                <i id='sound-pause-start' class="fas fa-volume-mute"></i>
             </div>
         </div>
            
@@ -75,10 +75,22 @@
     id='bubbles' 
     src='./dist/assets/audio/bubbles.wav' 
 ></audio>
+<audio 
+    loop 
+    id='pirate-music' 
+    src='./dist/assets/audio/pirates_big_ship_proud_music_preview.mp3' 
+></audio>
 
 <div class="screen-wrapper">
     <div id="clock-display" class="clock"></div>
-    <canvas id="game-canvas"> </canvas>
+    <div class="game-canvas-wrap">
+        <canvas id="game-canvas"> </canvas>
+        <div class='sound-controls hidden'>
+            <span>Sound</span>
+            <i id='sound-play' class="fas fa-volume-up hidden"></i>
+            <i id='sound-pause' class="fas fa-volume-mute"></i>
+        </div>
+    </div>
     <!-- <canvas id="win-canvas" class="win-canvas"> </canvas> -->
     <canvas id="inventory-canvas" class="inventory-canvas"> </canvas>
     <audio id='win-sound' src='./dist/assets/audio/win.wav' autoplay='false'></audio>

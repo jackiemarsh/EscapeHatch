@@ -23,7 +23,8 @@ export default class GameView {
         this.animate = this.animate.bind(this);
         this.inventory = [];
         setInterval(this.moveBackground, 600, this.grassFrame);
-        setInterval(this.sound, 9000)
+        // this.bubbles = setInterval(this.sound, 9000)
+        
         this.inventory = new Inventory(700, 100, 328, 140);
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
@@ -72,7 +73,12 @@ export default class GameView {
         const youWin = document.getElementsByClassName('win-box')[0];
         const gameStory = document.getElementsByClassName('game-story')[0];
         const instructions = document.getElementsByClassName('instructions')[0];
-        
+        const soundControlsStart = document.getElementsByClassName('start-controls')[0];
+        const soundControls = document.getElementsByClassName('sound-controls')[0];
+        const soundPauseS = document.getElementById('sound-pause-start');
+        const soundPause = document.getElementById('sound-pause');
+        const soundPlay = document.getElementById('sound-play');
+    
         openingBox.classList.add('hidden');
         map.classList.add('hidden');
         endBox.classList.add('hidden');
@@ -82,17 +88,51 @@ export default class GameView {
         youWin.classList.add('hidden');
         gameStory.classList.add('hidden');
         instructions.classList.add('hidden');
+        soundControlsStart.classList.add('hidden');
+        soundControls.classList.remove('hidden');
         clockDisplay.classList.remove('hidden');
         inventoryCanvas.classList.remove('hidden');
         
         // this.winGameSequence();
         this.timer(1);
+        // if (soundPauseS.classList.contains('hidden') || soundPause.classList.contains('hidden')) {
+        //     clearInterval(this.bubbles)
+        // }
     }
+
+//     soundControls() {
+//         const soundPlay = document.getElementById('sound-play');
+//         const soundPause = document.getElementById('sound-pause');
+//         const winSound = document.getElementById("win-sound");
+//         const loseSound = document.getElementById("lose-sound");
+//         const addSound = document.getElementById("add-sound");
+//         const sounds = document.getElementsByTagName("audio")
+//         if (soundPause.classList.contains(hidden)) {
+//             clearInterval(this.bubbles);
+//             // winSound.muted = true;
+//             // loseSound.muted = true;
+//             // addSound.muted = true;
+//             sounds.muted = true
+//             soundPause.classList.remove('hidden');
+//             soundPlay.classList.add('hidden');
+//          } else {
+//             //  winSound.muted = false;
+//              soundPlay.classList.remove('hidden');
+//              soundPause.classList.add('hidden');
+//          }
+//    };
 
     sound() {
         const bubblesSound = document.getElementById("bubbles");
         bubblesSound.loop = false;
         bubblesSound.play()
+    }
+
+    music() {
+        const pirateSong = document.getElementById("pirate-music");
+        pirateSong.loop = true;
+        pirateSong.play();
+        // clearInterval(this.bubbles)
     }
 
     timer(startMinutes) {
@@ -103,7 +143,8 @@ export default class GameView {
         const loseSound = document.getElementById("lose-sound");
         const bubblesSound = document.getElementById("bubbles-sound");
         const restartBtn = document.getElementsByClassName('restart-btn lose')[0];
-        
+        const soundPause = document.getElementById('sound-pause-start');
+        const soundPauseS = document.getElementById('sound-pause');
         let startTime = new Date().getTime();
         
         let runClock = setInterval(() => {
@@ -116,9 +157,11 @@ export default class GameView {
                 gameOver.classList.remove('hidden', 'stay-hidden');
                 restartBtn.classList.remove('hidden');
                 const bubblesSound = document.getElementById("bubbles");
-                bubblesSound.pause();
+                // clearInterval(this.bubbles)
                 loseSound.loop = false;
-                loseSound.play();
+                if (!soundPauseS.classList.contains('hidden') || !soundPause.classList.contains('hidden')) {
+                    loseSound.play();
+                }
             } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
@@ -136,7 +179,8 @@ export default class GameView {
         const countdownEl = document.getElementById("clock-display");
         const winAudio = document.getElementById("win-sound")
         const bubblesSound = document.getElementById("bubbles");
-        // const winAudio = new Audio("win.wav");
+        const soundPauseS = document.getElementById('sound-pause-start');
+        const soundPause = document.getElementById('sound-pause');
         winAudio.pause();
 
         if (this.player.inventory.length === 4) {
@@ -144,8 +188,10 @@ export default class GameView {
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
             // winAudio.loop = false;
-            winAudio.play();
-            bubblesSound.pause();
+            if (!soundPauseS.classList.contains('hidden') || !soundPause.classList.contains('hidden')) {
+                winAudio.play();
+            }
+            // clearInterval(this.bubbles)
             countdownEl.innerHTML = `Yargh!`
             this.win = true;
         }

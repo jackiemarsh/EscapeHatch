@@ -141,8 +141,14 @@ export default class Player {
         this.allItems.gameItems.splice(this.allItems.gameItems.indexOf(item), 1)
         this.inventory.push(item)
         const addAudio = document.getElementById("add-sound")
+        const soundPause = document.getElementById('sound-pause');
+        const soundPauseS = document.getElementById('sound-pause-start');
+    
         addAudio.loop = false;
-        addAudio.play();
+        if (!soundPauseS.classList.contains('hidden') || !soundPause.classList.contains('hidden')) {
+            console.log("add", soundPause.classList, soundPauseS.classList)
+            addAudio.play();
+        }
         return true;
         
     };

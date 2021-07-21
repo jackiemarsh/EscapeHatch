@@ -15,9 +15,16 @@ export default class Game {
         //     // console.log( "timer", x)
         //     return(x)
         // });
+        const soundPauseS = document.getElementById('sound-pause');
+    
         const bubblesSound = document.getElementById("bubbles");
         bubblesSound.loop = false;
-        bubblesSound.play()
+        // if (!soundPauseS.classList.contains('hidden')) {
+        //     bubblesSound.play()
+        // }
+
+        const pirateSong = document.getElementById("pirate-music");
+        pirateSong.pause()
     }
   
 
