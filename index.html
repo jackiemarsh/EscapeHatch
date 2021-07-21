@@ -24,9 +24,11 @@
 <body>
     <div class="opening-box"> 
         <div class="start-wrapper"> 
+            
             <div class="start-show"> 
                 <!-- <img class="map" src="./assets/images/map.png" alt="map"> -->
                 <button class='start-btn'>Start</button>
+               
             </div>
             <div class="menu">
                 <article class='game-story'>
@@ -47,6 +49,11 @@
                 <a href="https://github.com/jackiemarsh"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/jackie-marsh-a988874b/"><i class="fab fa-linkedin"></i></a>
             </span>  
+            <div class='music-controls '>
+                <span>Sound</span>
+                <i id='music-play' class="hidden fa fa-play"></i>
+                <i id='music-pause' class="fa fa-pause"></i>
+            </div>
         </div>
            
         
@@ -56,11 +63,19 @@
         <img class="map" src="./dist/assets/images/map.png" alt="map">
         <div class="win-box">You win!
             <button class="restart-btn win" onClick="window.location.reload();">Try Again?</button>
+            <audio id='win-sound' src='./dist/assets/audio/win.wav' autoplay='false'></audio>
+        </div>
             <div class="lose-box">Game Over
                 <button class="restart-btn lose" onClick="window.location.reload();">Try Again?</button>
             </div>
         </div>
     </div>
+
+    <audio 
+            loop 
+            id='bubbles' 
+            src='./dist/assets/audio/bubles.wav' 
+        ></audio>
 
     <div class="screen-wrapper">
         <div id="clock-display" class="clock"></div>

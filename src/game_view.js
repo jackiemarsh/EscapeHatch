@@ -121,12 +121,15 @@ export default class GameView {
         const youWin = document.getElementsByClassName('win-box')[0];
         const restartBtn = document.getElementsByClassName('restart-btn win')[0];
         const countdownEl = document.getElementById("clock-display");
-        
+        const winAudio = getElementById("win-sound")
+        // const winAudio = new Audio("win.wav");
+        // winAudio.src = "win.wav";
+
         if (this.player.inventory.length === 4) {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
-        
+            winAudio.play()
             countdownEl.innerHTML = `Yargh!`
             this.win = true;
         }
