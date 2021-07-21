@@ -23,6 +23,7 @@ export default class GameView {
         this.animate = this.animate.bind(this);
         this.inventory = [];
         setInterval(this.moveBackground, 600, this.grassFrame);
+        setInterval(this.sound, 9000)
         this.inventory = new Inventory(700, 100, 328, 140);
         this.player = new Player(this.canvas, this.inventory);
         this.inventory.drawInventory();
@@ -88,6 +89,12 @@ export default class GameView {
         this.timer(1);
     }
 
+    sound() {
+        const bubblesSound = document.getElementById("bubbles");
+        bubblesSound.loop = false;
+        bubblesSound.play()
+    }
+
     timer(startMinutes) {
         // startMinutes = 1;
         // this.level.time when harder levels built
@@ -104,8 +111,10 @@ export default class GameView {
                 const endBox = document.getElementsByClassName('end-game')[0];
                 const gameOver = document.getElementsByClassName('lose-box')[0];
                 endBox.classList.remove('hidden');
-                gameOver.classList.remove('hidden');
+                gameOver.classList.remove('hidden', 'stay-hidden');
                 restartBtn.classList.remove('hidden');
+                const bubblesSound = document.getElementById("bubbles");
+                bubblesSound.pause()
             } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
@@ -121,7 +130,8 @@ export default class GameView {
         const youWin = document.getElementsByClassName('win-box')[0];
         const restartBtn = document.getElementsByClassName('restart-btn win')[0];
         const countdownEl = document.getElementById("clock-display");
-        const winAudio = getElementById("win-sound")
+        const winAudio = document.getElementById("win-sound")
+        const bubblesSound = document.getElementById("bubbles");
         // const winAudio = new Audio("win.wav");
         // winAudio.src = "win.wav";
 
@@ -129,13 +139,20 @@ export default class GameView {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
-            winAudio.play()
+            // winAudio.loop = false;
+            winAudio.play();
+            bubblesSound.pause();
             countdownEl.innerHTML = `Yargh!`
             this.win = true;
         }
         // return false;
     }
-
+    // winSound() {
+    //     const winAudio = document.getElementById("win-sound")
+    //     if (this.pause) {
+    //         winAudio.play()
+    //     }
+    // }
     // gameOver() {
     //     if (this.timer() === "done") {
     //         const endBox = document.getElementsByClassName('end-game')[0];

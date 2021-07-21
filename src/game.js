@@ -15,6 +15,9 @@ export default class Game {
         //     // console.log( "timer", x)
         //     return(x)
         // });
+        const bubblesSound = document.getElementById("bubbles");
+        bubblesSound.loop = false;
+        bubblesSound.play()
     }
   
 

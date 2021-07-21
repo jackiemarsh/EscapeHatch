@@ -63,25 +63,25 @@
         <img class="map" src="./dist/assets/images/map.png" alt="map">
         <div class="win-box">You win!
             <button class="restart-btn win" onClick="window.location.reload();">Try Again?</button>
-            <audio id='win-sound' src='./dist/assets/audio/win.wav' autoplay='false'></audio>
         </div>
-            <div class="lose-box">Game Over
-                <button class="restart-btn lose" onClick="window.location.reload();">Try Again?</button>
-            </div>
+        <div class="lose-box">Game Over
+            <button class="restart-btn lose" onClick="window.location.reload();">Try Again?</button>
         </div>
     </div>
+</div>
 
-    <audio 
-            loop 
-            id='bubbles' 
-            src='./dist/assets/audio/bubles.wav' 
-        ></audio>
+<audio 
+    loop 
+    id='bubbles' 
+    src='./dist/assets/audio/bubbles.wav' 
+></audio>
 
-    <div class="screen-wrapper">
-        <div id="clock-display" class="clock"></div>
-        <canvas id="game-canvas"> </canvas>
-        <!-- <canvas id="win-canvas" class="win-canvas"> </canvas> -->
-        <canvas id="inventory-canvas" class="inventory-canvas"> </canvas>
+<div class="screen-wrapper">
+    <div id="clock-display" class="clock"></div>
+    <canvas id="game-canvas"> </canvas>
+    <!-- <canvas id="win-canvas" class="win-canvas"> </canvas> -->
+    <canvas id="inventory-canvas" class="inventory-canvas"> </canvas>
+    <audio id='win-sound' src='./dist/assets/audio/win.wav' autoplay='false'></audio>
         <div id="bubble-wrap">
             <div class="inner-bubble">
                 <div class="bubble x1"></div>
@@ -96,7 +96,7 @@
                 <div class="bubble x10"></div>
             </div>
         </div>
-    </div>
+</div>
   
     <script src="./dist/main.js"></script>
 </body>
