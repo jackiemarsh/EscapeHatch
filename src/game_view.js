@@ -100,6 +100,8 @@ export default class GameView {
         // this.level.time when harder levels built
         let time = startMinutes*60
         const countdownEl = document.getElementById("clock-display");
+        const loseSound = document.getElementById("lose-sound");
+        const bubblesSound = document.getElementById("bubbles-sound");
         const restartBtn = document.getElementsByClassName('restart-btn lose')[0];
         
         let startTime = new Date().getTime();
@@ -114,7 +116,9 @@ export default class GameView {
                 gameOver.classList.remove('hidden', 'stay-hidden');
                 restartBtn.classList.remove('hidden');
                 const bubblesSound = document.getElementById("bubbles");
-                bubblesSound.pause()
+                bubblesSound.pause();
+                loseSound.loop = false;
+                loseSound.play();
             } 
             let m = Math.floor(time/60);
             let s = Math.floor(time%60);
@@ -133,7 +137,7 @@ export default class GameView {
         const winAudio = document.getElementById("win-sound")
         const bubblesSound = document.getElementById("bubbles");
         // const winAudio = new Audio("win.wav");
-        // winAudio.src = "win.wav";
+        winAudio.pause();
 
         if (this.player.inventory.length === 4) {
             endBox.classList.remove('hidden');

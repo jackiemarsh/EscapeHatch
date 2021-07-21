@@ -140,7 +140,8 @@ export default class Player {
         }
         this.allItems.gameItems.splice(this.allItems.gameItems.indexOf(item), 1)
         this.inventory.push(item)
-        const addAudio = new Audio("add.mp3")
+        const addAudio = document.getElementById("add-sound")
+        addAudio.loop = false;
         addAudio.play();
         return true;
         
