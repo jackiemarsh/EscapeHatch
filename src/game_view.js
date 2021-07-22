@@ -183,7 +183,7 @@ export default class GameView {
         const soundPause = document.getElementById('sound-pause');
         winAudio.pause();
 
-        if (this.player.inventory.length === 4) {
+        if (this.player.inventory.length === 6) {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');

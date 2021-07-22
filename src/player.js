@@ -17,8 +17,8 @@ export default class Player {
             this.moving = false,
             this.direction = "idle",
             this.inventory = [
-                new Item("skull", 0, 0, 346, 398, Math.random() * 855, Math.random() * 600, 35, 40, "./dist/assets/inventory/skull.png"),
-                new Item("wood", 0, 0, 514, 423, Math.random() * 855, Math.random() * 600, 35, 35, "./dist/assets/inventory/wood.png"),
+                // new Item("skull", 0, 0, 346, 398, Math.random() * 855, Math.random() * 600, 35, 40, "./dist/assets/inventory/skull.png"),
+                // new Item("wood", 0, 0, 514, 423, Math.random() * 855, Math.random() * 600, 35, 35, "./dist/assets/inventory/wood.png"),
                                 ];
             this.allItems = allItems;
  
