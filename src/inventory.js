@@ -32,19 +32,6 @@ export default class Inventory {
         setInterval(this.moveCoin, 300, this.goldCoins);
     };
 
-
-    
-
-    // collidePoint(point) {
-
-    //     if (point.x < this.x || point.x > this.x + this.w || point.y < this.y || point.y > this.y + this.h) return false;
-
-    //     return true;
-
-    // };
-
-    //   let player = new Player();
-    //   let inventory = new Inventory(120, 8, 128, 32);
     generateAllItems() {
         let xLow = 50;
         let yLow = 170;
