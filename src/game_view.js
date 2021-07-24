@@ -1,6 +1,7 @@
 import Game from'./game';
 import Player from "./player.js";
 import Inventory from './inventory';
+import LevelTwo from './levels/level2';
 
 export default class GameView {
     constructor () {
@@ -184,6 +185,7 @@ export default class GameView {
         winAudio.pause();
 
         if (this.player.inventory.length === 6) {
+            // && this.player.inventory.includes(levels.levelWin())
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
