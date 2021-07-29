@@ -204,15 +204,7 @@ export default class GameView {
     //         winAudio.play()
     //     }
     // }
-    // gameOver() {
-    //     if (this.timer() === "done") {
-    //         const endBox = document.getElementsByClassName('end-game')[0];
-    //         const gameOver = document.getElementsByClassName('lose-box')[0];
-    //         endBox.classList.remove('hidden');
-    //         gameOver.classList.remove('hidden');
-    //         console.log("game over")
-    //     }
-    // }
+
 
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
