@@ -189,7 +189,6 @@ export default class GameView {
             endBox.classList.remove('hidden');
             youWin.classList.remove('hidden');
             restartBtn.classList.remove('hidden');
-            // winAudio.loop = false;
             if (!soundPauseS.classList.contains('hidden') || !soundPause.classList.contains('hidden')) {
                 winAudio.play();
             }
