@@ -19,9 +19,7 @@ export default class Game {
     
         const bubblesSound = document.getElementById("bubbles");
         bubblesSound.loop = false;
-        // if (!soundPauseS.classList.contains('hidden')) {
-        //     bubblesSound.play()
-        // }
+       
 
         const pirateSong = document.getElementById("pirate-music");
         pirateSong.pause()
