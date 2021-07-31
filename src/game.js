@@ -11,10 +11,7 @@ export default class Game {
         this.canvas = gameView.canvas;
         this.ctx = gameView.ctx;
         gameView.startAnimating(15);
-        // this.timer(1, (x) => {
-        //     // console.log( "timer", x)
-        //     return(x)
-        // });
+       
         const soundPauseS = document.getElementById('sound-pause');
     
         const bubblesSound = document.getElementById("bubbles");
