@@ -1,7 +1,7 @@
 import Game from'./game';
 import Player from "./player.js";
 import Inventory from './inventory';
-import LevelTwo from './levels/level2';
+// import LevelTwo from './levels/level2';
 
 export default class GameView {
     constructor () {
